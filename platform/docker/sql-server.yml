@@ -1,0 +1,24 @@
+services:
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    networks:
+      - net
+    env_file:
+      - .\config\core.env
+      - .\config\mssql.env
+      - .\config\mssql-password.env
+    volumes:
+      - mssql-data:/var/opt/lss/mssql/data
+      - mssql-log:/var/opt/lss/mssql/log
+      - mssql-backup:/var/opt/lss/mssql/backup
+
+networks:
+  net:
+
+volumes:
+  mssql-data:
+  mssql-log:
+  mssql-backup:
