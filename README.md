@@ -1,9 +1,5 @@
 # learning-sql-server
 
-A learning project for SQL Server.
-
-# Introduction
-
 This repository contains a collection of code and information illustrating various SQL Server features and practices. The details of implementations and practices are often subjective and as such, this content simply reflects my experience and opinions. Yours may vary and feedback is welcome (see below).
 
 Because SQL Server is my primary area of expertise, this repository maintains a different posture compared to the other "learning" repositories in my account. These other repositories generally represent introductory experiments in areas I needed or wanted to explore at the time due to project tasks or simply my own curiosity.
