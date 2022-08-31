@@ -4,7 +4,7 @@ This repository contains a collection of code and information illustrating vario
 
 Because SQL Server is my primary area of expertise, this repository maintains a different posture compared to the other "learning" repositories in my account. The other repositories generally represent introductory experiments in areas I needed or wanted to explore at the time due to project tasks or simply my own curiosity.
 
-Despite its name, this repository is not intended to provide a structured resource for beginners, although it may contain useful materials to that end nonetheless. SQL Server is a large and continually growing platform, so there is *always* more to learn.
+Despite its name, this repository is not intended to provide a structured resource for beginners. However, over time I hope to be able to provide content for all levels of SQL Server practitioners. SQL Server is a large and continually growing platform, so there is *always* more to learn.
 
 # Getting Started
 
@@ -32,7 +32,7 @@ Configure the Docker container for SQL Server.
     > .\Start.ps1
     ```
 
-The SQL Server instance is exposed on its default port (`1433`). You should be able to connect to it using SQL Server Management Studio or your preferred client using the administrator account (`sa`) and the password configured above.
+The SQL Server instance is exposed on its default port (`1433`). You can connect to it using SQL Server Management Studio or your preferred client using the administrator account (`sa`) and the password configured above.
 
 The container uses custom volumes and configures custom paths for SQL Server within those volumes. The former helps preserve data across container instances. The latter prevents a path conflict during creation of the SQL Server system databases when using a custom volume configuration.
 
