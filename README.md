@@ -32,11 +32,21 @@ Configure the Docker container for SQL Server.
    > .\Start.ps1
    ```
 
-The SQL Server instance is exposed on its default port (`1433`). You can connect to it using SQL Server Management Studio or your preferred client using the administrator account (`sa`) and the password configured above.
+   The SQL Server instance is exposed on its default port (`1433`). You can connect to it using SQL Server Management Studio or your preferred client using the administrator account (`sa`) and the password configured above.
 
-The container uses custom volumes and configures custom paths for SQL Server within those volumes. The former helps preserve data across container instances. The latter prevents a path conflict during creation of the SQL Server system databases when using a custom volume configuration.
+1. **Configure data volume permissions.**
 
-Next, deploy [the database](../../wiki/Learning-Database).
+   The container uses custom volumes and configures custom paths for SQL Server within those volumes. The former helps preserve data across container instances. The latter prevents a path conflict during creation of the SQL Server system databases when using a custom volume configuration.
+
+   Finally, to be able to create databases, the SQL Server process user must be granted ownership of the `mssql` folder and its children on the custom volume.
+
+   From a PowerShell command prompt, execute this command:
+
+   ```
+   > docker exec -u 0 learning-sql-server-mssql-1 bash -c "chown -Rv mssql /var/opt/lss/mssql"
+   ```
+
+Now you're ready to deploy [the database](../../wiki/Learning-Database).
 
 # More Information
 
