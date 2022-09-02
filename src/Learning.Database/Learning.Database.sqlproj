@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Learning.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{650db7f0-2e66-470a-8a74-66e07cef95bc}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Learning.Database</RootNamespace>
+    <AssemblyName>Learning.Database</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Latin1_General_100_CI_AS_SC</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <PageVerify>CHECKSUM</PageVerify>
+    <AllowSnapshotIsolation>True</AllowSnapshotIsolation>
+    <QueryStoreDesiredState>ReadWrite</QueryStoreDesiredState>
+    <EnableFullTextSearch>False</EnableFullTextSearch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Build" />
+    <Folder Include="Database" />
+    <Folder Include="Schemas" />
+    <Folder Include="Scripts-Post" />
+    <Folder Include="Scripts-Pre" />
+    <Folder Include="Server" />
+    <Folder Include="Database\Schemas" />
+    <Folder Include="Database\Users" />
+    <Folder Include="Server\Logins" />
+    <Folder Include="Schemas\Curriculum" />
+    <Folder Include="Schemas\Enrollment" />
+    <Folder Include="Schemas\Organization" />
+    <Folder Include="Schemas\Curriculum\Functions" />
+    <Folder Include="Schemas\Curriculum\Procedures" />
+    <Folder Include="Schemas\Curriculum\Tables" />
+    <Folder Include="Schemas\Curriculum\Views" />
+    <Folder Include="Schemas\Enrollment\Functions" />
+    <Folder Include="Schemas\Enrollment\Procedures" />
+    <Folder Include="Schemas\Enrollment\Tables" />
+    <Folder Include="Schemas\Enrollment\Views" />
+    <Folder Include="Schemas\Organization\Functions" />
+    <Folder Include="Schemas\Organization\Procedures" />
+    <Folder Include="Schemas\Organization\Tables" />
+    <Folder Include="Schemas\Organization\Views" />
+    <Folder Include="Schemas\Core" />
+    <Folder Include="Schemas\Core\Functions" />
+    <Folder Include="Schemas\Core\Procedures" />
+    <Folder Include="Schemas\Core\Tables" />
+    <Folder Include="Schemas\Core\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Publish-Learning.ps1" />
+    <None Include="Publish-Learning.publish.xml" />
+    <None Include="Build\SchemaCompare.scmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Database\Schemas\Organization.sql" />
+    <Build Include="Database\Schemas\Curriculum.sql" />
+    <Build Include="Database\Schemas\Enrollment.sql" />
+    <Build Include="Schemas\Organization\Tables\Institution.sql" />
+    <Build Include="Database\Schemas\Core.sql" />
+    <Build Include="Schemas\Core\Tables\TermSystem.sql" />
+    <Build Include="Schemas\Core\Tables\TermPeriod.sql" />
+    <Build Include="Schemas\Enrollment\Tables\Term.sql" />
+    <Build Include="Schemas\Organization\Tables\Campus.sql" />
+    <Build Include="Schemas\Organization\Tables\Building.sql" />
+    <Build Include="Schemas\Organization\Tables\Classroom.sql" />
+    <Build Include="Schemas\Organization\Tables\Department.sql" />
+    <Build Include="Schemas\Organization\Tables\Professor.sql" />
+  </ItemGroup>
+</Project>
