@@ -113,5 +113,13 @@
     <Build Include="Schemas\Organization\Tables\Classroom.sql" />
     <Build Include="Schemas\Organization\Tables\Department.sql" />
     <Build Include="Schemas\Organization\Tables\Professor.sql" />
+    <Build Include="Schemas\Curriculum\Tables\Course.sql" />
+    <Build Include="Schemas\Curriculum\Tables\Major.sql" />
+    <Build Include="Schemas\Curriculum\Tables\Minor.sql" />
+    <Build Include="Schemas\Curriculum\Tables\MajorCourse.sql" />
+    <Build Include="Schemas\Curriculum\Tables\MinorCourse.sql" />
+    <Build Include="Schemas\Enrollment\Tables\Student.sql" />
+    <Build Include="Schemas\Enrollment\Tables\CourseOffering.sql" />
+    <Build Include="Schemas\Enrollment\Tables\CourseEnrollment.sql" />
   </ItemGroup>
 </Project>

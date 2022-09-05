@@ -23,12 +23,14 @@ ALTER TABLE [Organization].[Professor]
 	ON [PRIMARY];
 GO
 
+-- The foriegn key to the institution.
 ALTER TABLE [Organization].[Professor]
 	ADD CONSTRAINT [fk_Professor_InstitutionKey_Institution]
 	FOREIGN KEY ([InstitutionKey])
 	REFERENCES [Organization].[Institution] ([InstitutionKey]);
 GO
 
+-- The foriegn key to the department.
 ALTER TABLE [Organization].[Professor]
 	ADD CONSTRAINT [fk_Professor_InstitutionKeyDepartmentKey_Department]
 	FOREIGN KEY ([InstitutionKey], [DepartmentKey])

@@ -21,6 +21,7 @@ ALTER TABLE [Core].[TermPeriod]
 	ON [PRIMARY];
 GO
 
+-- Enforce unique term period display names for each term system.
 ALTER TABLE [Core].[TermPeriod]
 	ADD CONSTRAINT [uk_TermPeriod_TermSystemKeyDisplayName]
 	UNIQUE ([TermSystemKey], [DisplayName])
@@ -28,6 +29,7 @@ ALTER TABLE [Core].[TermPeriod]
 	ON [PRIMARY];
 GO
 
+-- Enforce unique term period ordinals for each term system.
 ALTER TABLE [Core].[TermPeriod]
 	ADD CONSTRAINT [uk_TermPeriod_TermSystemKeyOrdinal]
 	UNIQUE ([TermSystemKey], [Ordinal])
@@ -35,6 +37,7 @@ ALTER TABLE [Core].[TermPeriod]
 	ON [PRIMARY];
 GO
 
+-- The foreign key to the term system.
 ALTER TABLE [Core].[TermPeriod]
 	ADD CONSTRAINT [fk_TermPeriod_TermSystemKey_TermSystem]
 	FOREIGN KEY ([TermSystemKey])

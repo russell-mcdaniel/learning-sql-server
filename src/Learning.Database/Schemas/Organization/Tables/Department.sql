@@ -13,6 +13,7 @@ ALTER TABLE [Organization].[Department]
 	ON [PRIMARY];
 GO
 
+-- Enforce unique department display names for each institution.
 ALTER TABLE [Organization].[Department]
 	ADD CONSTRAINT [uk_Department_InstitutionKeyDisplayName]
 	UNIQUE ([InstitutionKey], [DisplayName])
@@ -20,6 +21,7 @@ ALTER TABLE [Organization].[Department]
 	ON [PRIMARY];
 GO
 
+-- The foriegn key to the institution.
 ALTER TABLE [Organization].[Department]
 	ADD CONSTRAINT [fk_Department_InstitutionKey_Institution]
 	FOREIGN KEY ([InstitutionKey])

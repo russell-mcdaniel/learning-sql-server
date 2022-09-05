@@ -36,6 +36,27 @@ ALTER TABLE [Organization].[Classroom]
 	ON [PRIMARY];
 GO
 
+-- The foreign key to the institution.
+ALTER TABLE [Organization].[Classroom]
+	ADD CONSTRAINT [fk_Classroom_InstitutionKey_Institution]
+	FOREIGN KEY ([InstitutionKey])
+	REFERENCES [Organization].[Institution] ([InstitutionKey]);
+GO
+
+-- The foreign key to the campus.
+ALTER TABLE [Organization].[Classroom]
+	ADD CONSTRAINT [fk_Classroom_InstitutionKeyCampusKey_Campus]
+	FOREIGN KEY ([InstitutionKey], [CampusKey])
+	REFERENCES [Organization].[Campus] ([InstitutionKey], [CampusKey]);
+GO
+
+-- The foreign key to the building.
+ALTER TABLE [Organization].[Classroom]
+	ADD CONSTRAINT [fk_Classroom_InstitutionKeyCampusKeyBuildingKey_Building]
+	FOREIGN KEY ([InstitutionKey], [CampusKey], [BuildingKey])
+	REFERENCES [Organization].[Building] ([InstitutionKey], [CampusKey], [BuildingKey]);
+GO
+
 -- The floor number must be between 1 and 99.
 ALTER TABLE [Organization].[Classroom]
 	ADD CONSTRAINT [ck_Classroom_FloorNumber]

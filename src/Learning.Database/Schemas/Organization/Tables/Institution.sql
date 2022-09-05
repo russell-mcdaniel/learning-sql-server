@@ -14,6 +14,7 @@ ALTER TABLE [Organization].[Institution]
 	ON [PRIMARY];
 GO
 
+-- Enforce unique institution display names.
 ALTER TABLE [Organization].[Institution]
 	ADD CONSTRAINT [uk_Institution_DisplayName]
 	UNIQUE ([DisplayName])
@@ -21,13 +22,14 @@ ALTER TABLE [Organization].[Institution]
 	ON [PRIMARY];
 GO
 
+-- The foreign key to the term system.
 ALTER TABLE [Organization].[Institution]
 	ADD CONSTRAINT [fk_Institution_TermSystemKey_TermSystem]
 	FOREIGN KEY ([TermSystemKey])
 	REFERENCES [Core].[TermSystem] ([TermSystemKey]);
 GO
 
--- Supports foreign key.
+-- Supports the foreign key to the term system.
 CREATE NONCLUSTERED INDEX [ix_Institution_TermSystemKey]
 	ON [Organization].[Institution] ([TermSystemKey])
 	WITH (FILLFACTOR = 90)

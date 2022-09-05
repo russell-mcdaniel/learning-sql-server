@@ -21,3 +21,17 @@ ALTER TABLE [Organization].[Building]
 	WITH (FILLFACTOR = 90)
 	ON [PRIMARY];
 GO
+
+-- The foreign key to the institution.
+ALTER TABLE [Organization].[Building]
+	ADD CONSTRAINT [fk_Building_InstitutionKey_Institution]
+	FOREIGN KEY ([InstitutionKey])
+	REFERENCES [Organization].[Institution] ([InstitutionKey]);
+GO
+
+-- The foreign key to the campus.
+ALTER TABLE [Organization].[Building]
+	ADD CONSTRAINT [fk_Building_InstitutionKeyCampusKey_Campus]
+	FOREIGN KEY ([InstitutionKey], [CampusKey])
+	REFERENCES [Organization].[Campus] ([InstitutionKey], [CampusKey]);
+GO

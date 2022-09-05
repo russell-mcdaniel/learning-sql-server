@@ -18,6 +18,7 @@ ALTER TABLE [Core].[TermSystem]
 	ON [PRIMARY];
 GO
 
+-- Enforce unique term system display names.
 ALTER TABLE [Core].[TermSystem]
 	ADD CONSTRAINT [uk_TermSystem_DisplayName]
 	UNIQUE ([DisplayName])

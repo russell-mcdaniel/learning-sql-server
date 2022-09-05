@@ -22,6 +22,7 @@ ALTER TABLE [Organization].[Campus]
 	ON [PRIMARY];
 GO
 
+-- The foreign key to the institution.
 ALTER TABLE [Organization].[Campus]
 	ADD CONSTRAINT [fk_Campus_InstitutionKey_Institution]
 	FOREIGN KEY ([InstitutionKey])
