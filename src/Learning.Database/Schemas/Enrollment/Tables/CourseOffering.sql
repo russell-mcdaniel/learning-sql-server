@@ -1,7 +1,6 @@
 ﻿--
 -- Design Notes
 --
--- 
 -- It is not strictly necessary to provide a surrogate key, but it makes it
 -- easier to reference specific instances of this entity from other entities.
 --
