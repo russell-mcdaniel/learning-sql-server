@@ -6,7 +6,7 @@ There are probably better options by now.
 
 The `New-DbaClientAlias` cmdlet provided by [dbatools](https://dbatools.io/) might be one of them.
 
-## References
+# References
 
 https://dbatools.io/aliases/
 

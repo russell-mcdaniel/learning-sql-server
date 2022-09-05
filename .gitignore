@@ -5,6 +5,7 @@
 
 # Repository-specific configuration
 mssql-password.env
+Publish-Learning-Password-Sa.txt
 
 # User-specific files
 *.rsuser
@@ -173,7 +174,7 @@ DocProject/Help/html
 publish/
 
 # Publish Web Output
-*.[Pp]ublish.xml
+#*.[Pp]ublish.xml
 *.azurePubxml
 # Note: Comment the next line if you want to checkin your web deploy settings,
 # but database connection strings (with potential passwords) will be unencrypted

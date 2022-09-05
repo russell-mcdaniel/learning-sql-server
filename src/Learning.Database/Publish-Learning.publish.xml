@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>Learning</TargetDatabaseName>
+    <DeployScriptFileName>Learning.Database.sql</DeployScriptFileName>
+    <TargetConnectionString>Data Source=(local);Persist Security Info=True;User ID=sa;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=True;TrustServerCertificate=True</TargetConnectionString>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+    <AllowIncompatiblePlatform>True</AllowIncompatiblePlatform>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+    <PopulateFilesOnFileGroups>False</PopulateFilesOnFileGroups>
+    <ScriptFileSize>True</ScriptFileSize>
+    <ScriptDatabaseCompatibility>True</ScriptDatabaseCompatibility>
+    <ScriptDatabaseCollation>True</ScriptDatabaseCollation>
+    <DropObjectsNotInSource>True</DropObjectsNotInSource>
+    <IgnoreAnsiNulls>False</IgnoreAnsiNulls>
+    <IgnoreColumnOrder>True</IgnoreColumnOrder>
+    <IgnoreFileSize>False</IgnoreFileSize>
+    <IgnoreFilegroupPlacement>False</IgnoreFilegroupPlacement>
+    <IgnoreFillFactor>False</IgnoreFillFactor>
+    <IgnoreIndexPadding>False</IgnoreIndexPadding>
+    <IgnoreKeywordCasing>False</IgnoreKeywordCasing>
+    <IgnoreObjectPlacementOnPartitionScheme>False</IgnoreObjectPlacementOnPartitionScheme>
+    <IgnoreQuotedIdentifiers>False</IgnoreQuotedIdentifiers>
+    <IgnoreRouteLifetime>False</IgnoreRouteLifetime>
+    <IgnoreSemicolonBetweenStatements>False</IgnoreSemicolonBetweenStatements>
+    <IgnoreWhitespace>False</IgnoreWhitespace>
+    <DatabaseEdition>Basic</DatabaseEdition>
+    <DatabaseServiceObjective>Basic</DatabaseServiceObjective>
+    <DatabaseMaximumSize>2</DatabaseMaximumSize>
+  </PropertyGroup>
+</Project>
