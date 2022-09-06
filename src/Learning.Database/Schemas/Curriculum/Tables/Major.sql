@@ -2,7 +2,7 @@
 (
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
 	[MajorKey]								uniqueidentifier		NOT NULL,
-	[DisplayName]							nvarchar(20)			NOT NULL
+	[DisplayName]							nvarchar(40)			NOT NULL
 );
 GO
 

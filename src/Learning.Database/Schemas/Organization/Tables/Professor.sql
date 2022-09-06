@@ -3,7 +3,7 @@
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
 	[DepartmentKey]							uniqueidentifier		NOT NULL,		-- It could be argued this should be an ordinary attribute.
 	[ProfessorKey]							uniqueidentifier		NOT NULL,
-	[DisplayName]							nvarchar(30)			NOT NULL
+	[DisplayName]							nvarchar(40)			NOT NULL
 );
 GO
 

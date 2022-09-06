@@ -3,7 +3,7 @@
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
 	[CampusKey]								uniqueidentifier		NOT NULL,
 	[BuildingKey]							uniqueidentifier		NOT NULL,
-	[DisplayName]							nvarchar(30)			NOT NULL
+	[DisplayName]							nvarchar(40)			NOT NULL
 );
 GO
 

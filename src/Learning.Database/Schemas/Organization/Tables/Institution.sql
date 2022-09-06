@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [Organization].[Institution]
 (
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
-	[DisplayName]							nvarchar(30)			NOT NULL,
-	[LocationName]							nvarchar(30)			NOT NULL,
+	[DisplayName]							nvarchar(40)			NOT NULL,
+	[LocationName]							nvarchar(40)			NOT NULL,
 	[TermSystemKey]							uniqueidentifier		NOT NULL
 );
 GO

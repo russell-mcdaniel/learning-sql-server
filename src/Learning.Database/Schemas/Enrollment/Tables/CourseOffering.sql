@@ -4,6 +4,8 @@
 -- It is not strictly necessary to provide a surrogate key, but it makes it
 -- easier to reference specific instances of this entity from other entities.
 --
+-- TODO: Connect offering to specific classroom (and building and campus).
+--
 CREATE TABLE [Enrollment].[CourseOffering]
 (
 	[InstitutionKey]						uniqueidentifier		NOT NULL,

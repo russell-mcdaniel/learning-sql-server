@@ -2,8 +2,8 @@
 (
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
 	[CampusKey]								uniqueidentifier		NOT NULL,
-	[DisplayName]							nvarchar(30)			NOT NULL,
-	[LocationName]							nvarchar(30)			NOT NULL
+	[DisplayName]							nvarchar(40)			NOT NULL,
+	[LocationName]							nvarchar(40)			NOT NULL
 );
 GO
 
