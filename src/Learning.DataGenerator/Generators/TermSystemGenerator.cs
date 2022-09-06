@@ -1,6 +1,6 @@
-﻿using Learning.Database.DataGenerator.Models;
+﻿using Learning.DataGenerator.Models;
 
-namespace Learning.Database.DataGenerator.Factories
+namespace Learning.DataGenerator.Factories
 {
     internal static class TermSystemGenerator
     {

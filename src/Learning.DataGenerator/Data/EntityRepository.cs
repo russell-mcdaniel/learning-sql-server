@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Dapper;
-using Learning.Database.DataGenerator.Models;
+using Learning.DataGenerator.Models;
 
-namespace Learning.Database.DataGenerator.Data
+namespace Learning.DataGenerator.Data
 {
     public class EntityRepository : IEntityRepository
     {

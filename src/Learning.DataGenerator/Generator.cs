@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Learning.Database.DataGenerator.Data;
-using Learning.Database.DataGenerator.Factories;
-using Learning.Database.DataGenerator.Models;
-using Learning.Database.DataGenerator.Generators;
+using Learning.DataGenerator.Data;
+using Learning.DataGenerator.Factories;
+using Learning.DataGenerator.Models;
+using Learning.DataGenerator.Generators;
 
-namespace Learning.Database.DataGenerator
+namespace Learning.DataGenerator
 {
     internal class Generator : IHostedService
     {

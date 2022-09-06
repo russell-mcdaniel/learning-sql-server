@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 
-namespace Learning.Database.DataGenerator.Data
+namespace Learning.DataGenerator.Data
 {
     public static class DbConnectionFactory
     {

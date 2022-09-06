@@ -1,7 +1,7 @@
 ﻿using Bogus;
-using Learning.Database.DataGenerator.Models;
+using Learning.DataGenerator.Models;
 
-namespace Learning.Database.DataGenerator.Generators
+namespace Learning.DataGenerator.Generators
 {
     internal static class InstitutionGenerator
     {

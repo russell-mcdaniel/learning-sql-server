@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Learning.Database", "Learning.Database\Learning.Database.sqlproj", "{650DB7F0-2E66-470A-8A74-66E07CEF95BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learning.Database.DataGenerator", "Learning.Database.DataGenerator\Learning.Database.DataGenerator.csproj", "{F072ED38-28EF-4B06-A89C-CBBF57D283CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning.DataGenerator", "Learning.DataGenerator\Learning.DataGenerator.csproj", "{0705AD67-426A-4F58-9AB1-520346C0E894}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,10 @@ Global
 		{650DB7F0-2E66-470A-8A74-66E07CEF95BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{650DB7F0-2E66-470A-8A74-66E07CEF95BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{650DB7F0-2E66-470A-8A74-66E07CEF95BC}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{F072ED38-28EF-4B06-A89C-CBBF57D283CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F072ED38-28EF-4B06-A89C-CBBF57D283CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F072ED38-28EF-4B06-A89C-CBBF57D283CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F072ED38-28EF-4B06-A89C-CBBF57D283CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0705AD67-426A-4F58-9AB1-520346C0E894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0705AD67-426A-4F58-9AB1-520346C0E894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0705AD67-426A-4F58-9AB1-520346C0E894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0705AD67-426A-4F58-9AB1-520346C0E894}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

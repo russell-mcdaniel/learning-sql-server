@@ -1,4 +1,4 @@
-﻿namespace Learning.Database.DataGenerator.Models
+﻿namespace Learning.DataGenerator.Models
 {
     public class Institution
     {

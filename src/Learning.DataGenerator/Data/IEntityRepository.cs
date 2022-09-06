@@ -1,6 +1,6 @@
-﻿using Learning.Database.DataGenerator.Models;
+﻿using Learning.DataGenerator.Models;
 
-namespace Learning.Database.DataGenerator.Data
+namespace Learning.DataGenerator.Data
 {
     public interface IEntityRepository
     {

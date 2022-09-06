@@ -1,4 +1,4 @@
-﻿namespace Learning.Database.DataGenerator.Data
+﻿namespace Learning.DataGenerator.Data
 {
     /// <summary>
     /// 
