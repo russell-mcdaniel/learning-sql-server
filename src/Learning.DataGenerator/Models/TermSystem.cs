@@ -6,6 +6,6 @@
 
         public string DisplayName { get; set; }
 
-        public List<TermPeriod> TermPeriods { get; } = new List<TermPeriod>();
+        public IList<TermPeriod> TermPeriods { get; } = new List<TermPeriod>();
     }
 }

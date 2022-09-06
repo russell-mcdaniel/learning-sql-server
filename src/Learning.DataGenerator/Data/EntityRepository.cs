@@ -18,6 +18,26 @@ namespace Learning.DataGenerator.Data
             _logger = logger;
         }
 
+        public void Insert(IEnumerable<Building> buildings)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Organization.Building (InstitutionKey, CampusKey, BuildingKey, DisplayName) VALUES (@InstitutionKey, @CampusKey, @BuildingKey, @DisplayName);",
+                from b in buildings select new { b.Institution.InstitutionKey, b.Campus.CampusKey, b.BuildingKey, b.DisplayName });
+        }
+
+        public void Insert(IEnumerable<Campus> campuses)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Organization.Campus (InstitutionKey, CampusKey, DisplayName, LocationName) VALUES (@InstitutionKey, @CampusKey, @DisplayName, @LocationName);",
+                from c in campuses select new { c.Institution.InstitutionKey, c.CampusKey, c.DisplayName, c.LocationName });
+        }
+
         public void Insert(IEnumerable<Institution> institutions)
         {
             using var connection = DbConnectionFactory.GetConnection(

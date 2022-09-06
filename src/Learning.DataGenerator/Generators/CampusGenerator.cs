@@ -4,36 +4,36 @@ using Learning.DataGenerator.Models;
 
 namespace Learning.DataGenerator.Generators
 {
-    internal static class InstitutionGenerator
+    internal static class CampusGenerator
     {
-        internal static IList<Institution> Generate(IList<TermSystem> systems)
+        internal static IList<Campus> Generate(Institution institution)
         {
-            var toCreate = 6;
+            var toCreate = 2;
 
-            var names = GenerateInstitutionNames(toCreate);
+            var names = GenerateCampusNames(toCreate);
             var nameIndex = 0;
 
             var locations = GenerateLocationNames(toCreate);
             var locationIndex = 0;
 
-            var institutionFaker = new Faker<Institution>()
+            var campusFaker = new Faker<Campus>()
                 .StrictMode(true)
-                .RuleFor(i => i.InstitutionKey, f => Guid.NewGuid())
-                .RuleFor(i => i.DisplayName, f => names[nameIndex++])
-                .RuleFor(i => i.LocationName, f => locations[locationIndex++])
-                .RuleFor(i => i.TermSystem, f => f.PickRandom(systems));
+                .RuleFor(c => c.Institution, f => institution)
+                .RuleFor(c => c.CampusKey, f => Guid.NewGuid())
+                .RuleFor(c => c.DisplayName, f => names[nameIndex++])
+                .RuleFor(c => c.LocationName, f => locations[locationIndex++]);
 
-            var institutions = institutionFaker.Generate(toCreate);
+            var campuses = campusFaker.Generate(toCreate);
 
-            return institutions;
+            return campuses;
         }
 
         /// <summary>
-        /// Generates a unique set of institution names.
+        /// Generates a unique set of campus names.
         /// </summary>
         /// <param name="namesToCreate"></param>
         /// <returns></returns>
-        private static IList<string> GenerateInstitutionNames(int namesToCreate)
+        private static IList<string> GenerateCampusNames(int namesToCreate)
         {
             var nameSet = new HashSet<string>();
             var namesCreated = 0;
@@ -42,7 +42,7 @@ namespace Learning.DataGenerator.Generators
 
             while (namesCreated < namesToCreate)
             {
-                var name = f.Company.CompanyName()
+                var name = f.Address.StreetName()
                     .ClampLength(max: 40);
 
                 if (nameSet.Add(name))
