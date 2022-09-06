@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Repository-specific configuration
+appsettings.*.json
 mssql-password.env
 Publish-Learning-Password-Sa.txt
 
