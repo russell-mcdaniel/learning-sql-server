@@ -18,6 +18,8 @@ namespace Learning.DataGenerator.Data
 
         void Insert(IEnumerable<Professor> professors);
 
+        void Insert(IEnumerable<ProgramCourse> programCourses);
+
         void Insert(IEnumerable<ProgramLdb> programs);
     }
 }

@@ -19,7 +19,7 @@ namespace Learning.DataGenerator.Generators
 
         public void Generate()
         {
-            _logger.LogInformation("Data generation is starting...");
+            _logger.LogInformation("Generation is starting...");
 
             var institutions = GenerateInstitutions();
 
@@ -43,109 +43,121 @@ namespace Learning.DataGenerator.Generators
                 {
                     var programs = GeneratePrograms(department);
                     var courses = GenerateCourses(department);
-                    //var programCourses = GenerateProgramCourses(programs, courses);
+                    var programCourses = GenerateProgramCourses(programs, courses);
 
                     var professors = GenerateProfessors(department);
                 }
             }
 
-            _logger.LogInformation("Data generation is complete.");
+            _logger.LogInformation("Generation is complete.");
         }
 
         private IList<Building> GenerateBuildings(Campus campus)
         {
-            _logger.LogInformation($"Building generation is starting for {campus.DisplayName}...");
+            _logger.LogInformation("Generation is starting for buildings for {Campus}...", campus.DisplayName);
 
             var buildings = BuildingGenerator.Generate(campus);
             _repository.Insert(buildings);
 
-            _logger.LogInformation("Building generation is complete.");
+            _logger.LogInformation("Generation is complete for buildings.");
 
             return buildings;
         }
 
         private IList<Campus> GenerateCampuses(Institution institution)
         {
-            _logger.LogInformation($"Campus generation is starting for {institution.DisplayName}...");
+            _logger.LogInformation("Generation is starting for campuses for {Institution}...", institution.DisplayName);
 
             var campuses = CampusGenerator.Generate(institution);
             _repository.Insert(campuses);
 
-            _logger.LogInformation("Campus generation is complete.");
+            _logger.LogInformation("Generation is complete for campuses.");
 
             return campuses;
         }
 
         private IList<Classroom> GenerateClassrooms(Building building)
         {
-            _logger.LogInformation($"Classroom generation is starting for {building.DisplayName}...");
+            _logger.LogInformation("Generation is starting for classrooms for {Building}...", building.DisplayName);
 
             var classrooms = ClassroomGenerator.Generate(building);
             _repository.Insert(classrooms);
 
-            _logger.LogInformation("Classroom generation is complete.");
+            _logger.LogInformation("Generation is complete for classrooms.");
 
             return classrooms;
         }
 
         private IList<Course> GenerateCourses(Department department)
         {
-            _logger.LogInformation($"Course generation is starting for {department.DisplayName}...");
+            _logger.LogInformation("Generation is starting for courses for {Department}...", department.DisplayName);
 
             var courses = CourseGenerator.Generate(department);
             _repository.Insert(courses);
 
-            _logger.LogInformation("Course generation is complete.");
+            _logger.LogInformation("Generation is complete for courses.");
 
             return courses;
         }
 
         private IList<Department> GenerateDepartments(Institution institution)
         {
-            _logger.LogInformation($"Department generation is starting for {institution.DisplayName}...");
+            _logger.LogInformation("Generation is starting for departments for {Institution}...", institution.DisplayName);
 
             var departments = DepartmentGenerator.Generate(institution);
             _repository.Insert(departments);
 
-            _logger.LogInformation("Department generation is complete.");
+            _logger.LogInformation("Generation is complete for departments.");
 
             return departments;
         }
 
         private IList<Institution> GenerateInstitutions()
         {
-            _logger.LogInformation("Institution generation is starting...");
+            _logger.LogInformation("Generation is starting for institutions...");
 
             var institutions = InstitutionGenerator.Generate();
             _repository.Insert(institutions);
 
-            _logger.LogInformation("Institution generation is complete.");
+            _logger.LogInformation("Generation is complete for institutions.");
 
             return institutions;
         }
 
         private IList<Professor> GenerateProfessors(Department department)
         {
-            _logger.LogInformation($"Professor generation is starting for {department.DisplayName}...");
+            _logger.LogInformation("Generation is starting for professors for {Department}...", department.DisplayName);
 
             var professors = ProfessorGenerator.Generate(department);
             _repository.Insert(professors);
 
-            _logger.LogInformation("Professor generation is complete.");
+            _logger.LogInformation("Generation is complete for professors.");
 
             return professors;
         }
 
         private IList<ProgramLdb> GeneratePrograms(Department department)
         {
-            _logger.LogInformation($"Program generation is starting for {department.DisplayName}...");
+            _logger.LogInformation("Generation is starting for programs for {Department}...", department.DisplayName);
 
             var programs = ProgramGenerator.Generate(department);
             _repository.Insert(programs);
 
-            _logger.LogInformation("Program generation is complete.");
+            _logger.LogInformation("Generation is complete for programs.");
 
             return programs;
+        }
+
+        private IList<ProgramCourse> GenerateProgramCourses(IList<ProgramLdb> programs, IList<Course> courses)
+        {
+            _logger.LogInformation("Generation is starting for program-courses for {Department}...", programs[0].Department.DisplayName);
+
+            var programCourses = ProgramCourseGenerator.Generate(programs, courses);
+            _repository.Insert(programCourses);
+
+            _logger.LogInformation("Generation is complete for program-courses.");
+
+            return programCourses;
         }
     }
 }
