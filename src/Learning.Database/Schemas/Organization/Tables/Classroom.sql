@@ -1,13 +1,22 @@
-﻿CREATE TABLE [Organization].[Classroom]
+﻿--
+-- Design Notes
+--
+-- The display name is derived from the building name, a random floor
+-- quadrant letter, a random floor number, and a random room number.
+--
+-- Building Name:  SMI             First three characters of name.
+-- Floor Number:   A|B|C|D 01-12   Quadrant letter plus 1-12.
+-- Room Number:    100 - 990       10-99, but multiples of 10.
+--
+-- Example:        SMI-B12-870
+--
+CREATE TABLE [Organization].[Classroom]
 (
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
 	[CampusKey]								uniqueidentifier		NOT NULL,
 	[BuildingKey]							uniqueidentifier		NOT NULL,
 	[ClassroomKey]							uniqueidentifier		NOT NULL,
-	[FloorNumber]							tinyint					NOT NULL,
-	[RoomNumber]							smallint				NOT NULL,
-	[DisplayName]							AS (CONVERT([nchar](8),((N'F'+right(N'00'+CONVERT([nvarchar](2),[FloorNumber]),(2)))+N'-R')+right(N'000'+CONVERT([nvarchar](3),[RoomNumber]),(3))))
-												PERSISTED			NOT NULL	-- Example: "F02-R125"
+	[DisplayName]							nchar(11)				NOT NULL
 );
 GO
 
@@ -18,20 +27,10 @@ ALTER TABLE [Organization].[Classroom]
 	ON [PRIMARY];
 GO
 
--- Enforce unique floor number and room number combinations for each building.
-ALTER TABLE [Organization].[Classroom]
-	ADD CONSTRAINT [uk_Classroom_InstitutionKeyCampusKeyBuildingKeyFloorNumberRoomNumber]
-	UNIQUE ([InstitutionKey], [CampusKey], [BuildingKey], [ClassroomKey], [FloorNumber], [RoomNumber])
-	WITH (FILLFACTOR = 90)
-	ON [PRIMARY];
-GO
-
--- Enforce unique display names for each building. This should be inherent because the
--- value is derived from the floor number and room number, but this constraint ensures
--- data integrity in the event that the computed column expression has a bug.
+-- Enforce unique classroom display names for each building.
 ALTER TABLE [Organization].[Classroom]
 	ADD CONSTRAINT [uk_Classroom_InstitutionKeyCampusKeyBuildingKeyDisplayName]
-	UNIQUE ([InstitutionKey], [CampusKey], [BuildingKey], [ClassroomKey], [DisplayName])
+	UNIQUE ([InstitutionKey], [CampusKey], [BuildingKey], [DisplayName])
 	WITH (FILLFACTOR = 90)
 	ON [PRIMARY];
 GO
@@ -55,16 +54,4 @@ ALTER TABLE [Organization].[Classroom]
 	ADD CONSTRAINT [fk_Classroom_InstitutionKeyCampusKeyBuildingKey_Building]
 	FOREIGN KEY ([InstitutionKey], [CampusKey], [BuildingKey])
 	REFERENCES [Organization].[Building] ([InstitutionKey], [CampusKey], [BuildingKey]);
-GO
-
--- The floor number must be between 1 and 99.
-ALTER TABLE [Organization].[Classroom]
-	ADD CONSTRAINT [ck_Classroom_FloorNumber]
-	CHECK ([FloorNumber]>(0) AND [FloorNumber]<(100));
-GO
-
--- The room number must be between 1 and 999.
-ALTER TABLE [Organization].[Classroom]
-	ADD CONSTRAINT [ck_Classroom_RoomNumber]
-	CHECK ([RoomNumber]>(0) AND [RoomNumber]<(1000));
 GO

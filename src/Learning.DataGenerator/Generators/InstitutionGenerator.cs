@@ -8,7 +8,7 @@ namespace Learning.DataGenerator.Generators
     {
         internal static IList<Institution> Generate(IList<TermSystem> systems)
         {
-            var toCreate = 6;
+            var toCreate = 10;
 
             var names = GenerateInstitutionNames(toCreate);
             var nameIndex = 0;
@@ -31,8 +31,6 @@ namespace Learning.DataGenerator.Generators
         /// <summary>
         /// Generates a unique set of institution names.
         /// </summary>
-        /// <param name="namesToCreate"></param>
-        /// <returns></returns>
         private static IList<string> GenerateInstitutionNames(int namesToCreate)
         {
             var nameSet = new HashSet<string>();

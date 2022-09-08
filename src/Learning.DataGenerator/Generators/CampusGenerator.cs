@@ -31,8 +31,6 @@ namespace Learning.DataGenerator.Generators
         /// <summary>
         /// Generates a unique set of campus names.
         /// </summary>
-        /// <param name="namesToCreate"></param>
-        /// <returns></returns>
         private static IList<string> GenerateCampusNames(int namesToCreate)
         {
             var nameSet = new HashSet<string>();

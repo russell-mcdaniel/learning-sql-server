@@ -8,7 +8,7 @@ namespace Learning.DataGenerator.Generators
     {
         internal static IList<Building> Generate(Campus campus)
         {
-            var toCreate = 6;
+            var toCreate = 10;
 
             var names = GenerateBuildingNames(toCreate);
             var nameIndex = 0;
@@ -26,10 +26,8 @@ namespace Learning.DataGenerator.Generators
         }
 
         /// <summary>
-        /// Generates a unique set of campus names.
+        /// Generates a unique set of building names.
         /// </summary>
-        /// <param name="namesToCreate"></param>
-        /// <returns></returns>
         private static IList<string> GenerateBuildingNames(int namesToCreate)
         {
             var nameSet = new HashSet<string>();

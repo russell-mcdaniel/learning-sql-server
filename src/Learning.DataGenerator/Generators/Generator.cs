@@ -32,6 +32,18 @@ namespace Learning.DataGenerator.Generators
                 foreach (var campus in campuses)
                 {
                     var buildings = GenerateBuildings(campus);
+
+                    foreach (var building in buildings)
+                    {
+                        var classrooms = GenerateClassrooms(building);
+                    }
+                }
+
+                var departments = GenerateDepartments(institution);
+
+                foreach (var department in departments)
+                {
+                    var professors = GenerateProfessors(department);
                 }
             }
 
@@ -62,6 +74,30 @@ namespace Learning.DataGenerator.Generators
             return campuses;
         }
 
+        private IList<Classroom> GenerateClassrooms(Building building)
+        {
+            _logger.LogInformation($"Classroom generation is starting for {building.DisplayName}...");
+
+            var classrooms = ClassroomGenerator.Generate(building);
+            _repository.Insert(classrooms);
+
+            _logger.LogInformation("Classroom generation is complete.");
+
+            return classrooms;
+        }
+
+        private IList<Department> GenerateDepartments(Institution institution)
+        {
+            _logger.LogInformation($"Department generation is starting for {institution.DisplayName}...");
+
+            var departments = DepartmentGenerator.Generate(institution);
+            _repository.Insert(departments);
+
+            _logger.LogInformation("Department generation is complete.");
+
+            return departments;
+        }
+
         private IList<Institution> GenerateInstitutions(IList<TermSystem> systems)
         {
             _logger.LogInformation("Institution generation is starting...");
@@ -72,6 +108,18 @@ namespace Learning.DataGenerator.Generators
             _logger.LogInformation("Institution generation is complete.");
 
             return institutions;
+        }
+
+        private IList<Professor> GenerateProfessors(Department department)
+        {
+            _logger.LogInformation($"Professor generation is starting for {department.DisplayName}...");
+
+            var professors = ProfessorGenerator.Generate(department);
+            _repository.Insert(professors);
+
+            _logger.LogInformation("Professor generation is complete.");
+
+            return professors;
         }
 
         private IList<TermSystem> GenerateTermSystems()

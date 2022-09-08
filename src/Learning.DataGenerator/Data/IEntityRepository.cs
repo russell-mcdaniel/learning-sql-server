@@ -8,7 +8,13 @@ namespace Learning.DataGenerator.Data
 
         void Insert(IEnumerable<Campus> campuses);
 
+        void Insert(IEnumerable<Classroom> classrooms);
+
+        void Insert(IEnumerable<Department> departments);
+
         void Insert(IEnumerable<Institution> institutions);
+
+        void Insert(IEnumerable<Professor> professors);
 
         void Insert(IEnumerable<TermSystem> systems);
     }

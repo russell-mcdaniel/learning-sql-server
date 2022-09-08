@@ -38,6 +38,26 @@ namespace Learning.DataGenerator.Data
                 from c in campuses select new { c.Institution.InstitutionKey, c.CampusKey, c.DisplayName, c.LocationName });
         }
 
+        public void Insert(IEnumerable<Classroom> classrooms)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Organization.Classroom (InstitutionKey, CampusKey, BuildingKey, ClassroomKey, DisplayName) VALUES (@InstitutionKey, @CampusKey, @BuildingKey, @ClassroomKey, @DisplayName);",
+                from c in classrooms select new { c.Institution.InstitutionKey, c.Campus.CampusKey, c.Building.BuildingKey, c.ClassroomKey, c.DisplayName });
+        }
+
+        public void Insert(IEnumerable<Department> departments)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Organization.Department (InstitutionKey, DepartmentKey, DisplayName) VALUES (@InstitutionKey, @DepartmentKey, @DisplayName);",
+                from d in departments select new { d.Institution.InstitutionKey, d.DepartmentKey, d.DisplayName });
+        }
+
         public void Insert(IEnumerable<Institution> institutions)
         {
             using var connection = DbConnectionFactory.GetConnection(
@@ -46,6 +66,16 @@ namespace Learning.DataGenerator.Data
             connection.Execute(
                 "INSERT INTO Organization.Institution (InstitutionKey, DisplayName, LocationName, TermSystemKey) VALUES (@InstitutionKey, @DisplayName, @LocationName, @TermSystemKey);",
                 from i in institutions select new { i.InstitutionKey, i.DisplayName, i.LocationName, i.TermSystem.TermSystemKey });
+        }
+
+        public void Insert(IEnumerable<Professor> professors)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Organization.Professor (InstitutionKey, DepartmentKey, ProfessorKey, DisplayName) VALUES (@InstitutionKey, @DepartmentKey, @ProfessorKey, @DisplayName);",
+                from p in professors select new { p.Institution.InstitutionKey, p.Department.DepartmentKey, p.ProfessorKey, p.DisplayName });
         }
 
         public void Insert(IEnumerable<TermSystem> systems)
