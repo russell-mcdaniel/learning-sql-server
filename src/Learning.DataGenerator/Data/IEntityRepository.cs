@@ -10,10 +10,14 @@ namespace Learning.DataGenerator.Data
 
         void Insert(IEnumerable<Classroom> classrooms);
 
+        void Insert(IEnumerable<Course> courses);
+
         void Insert(IEnumerable<Department> departments);
 
         void Insert(IEnumerable<Institution> institutions);
 
         void Insert(IEnumerable<Professor> professors);
+
+        void Insert(IEnumerable<ProgramLdb> programs);
     }
 }

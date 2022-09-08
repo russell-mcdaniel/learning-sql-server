@@ -8,7 +8,7 @@ namespace Learning.DataGenerator.Generators
     {
         internal static IList<Building> Generate(Campus campus)
         {
-            var toCreate = 10;
+            var toCreate = 5;
 
             var names = GenerateBuildingNames(toCreate);
             var nameIndex = 0;

@@ -41,6 +41,10 @@ namespace Learning.DataGenerator.Generators
 
                 foreach (var department in departments)
                 {
+                    var programs = GeneratePrograms(department);
+                    var courses = GenerateCourses(department);
+                    //var programCourses = GenerateProgramCourses(programs, courses);
+
                     var professors = GenerateProfessors(department);
                 }
             }
@@ -84,6 +88,18 @@ namespace Learning.DataGenerator.Generators
             return classrooms;
         }
 
+        private IList<Course> GenerateCourses(Department department)
+        {
+            _logger.LogInformation($"Course generation is starting for {department.DisplayName}...");
+
+            var courses = CourseGenerator.Generate(department);
+            _repository.Insert(courses);
+
+            _logger.LogInformation("Course generation is complete.");
+
+            return courses;
+        }
+
         private IList<Department> GenerateDepartments(Institution institution)
         {
             _logger.LogInformation($"Department generation is starting for {institution.DisplayName}...");
@@ -118,6 +134,18 @@ namespace Learning.DataGenerator.Generators
             _logger.LogInformation("Professor generation is complete.");
 
             return professors;
+        }
+
+        private IList<ProgramLdb> GeneratePrograms(Department department)
+        {
+            _logger.LogInformation($"Program generation is starting for {department.DisplayName}...");
+
+            var programs = ProgramGenerator.Generate(department);
+            _repository.Insert(programs);
+
+            _logger.LogInformation("Program generation is complete.");
+
+            return programs;
         }
     }
 }

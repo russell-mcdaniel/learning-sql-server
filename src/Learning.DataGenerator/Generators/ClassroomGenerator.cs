@@ -8,7 +8,7 @@ namespace Learning.DataGenerator.Generators
     {
         internal static IList<Classroom> Generate(Building building)
         {
-            var toCreate = 30;
+            var toCreate = 10;
 
             var names = GenerateClassroomNames(toCreate, building);
             var nameIndex = 0;
@@ -46,7 +46,7 @@ namespace Learning.DataGenerator.Generators
 
             while (namesCreated < namesToCreate)
             {
-                var quadrant = f.PickRandom(new string[] { "A", "B", "C", "D" });
+                var quadrant = f.PickRandom(new[] { "A", "B", "C", "D" });
                 var floorNumber = f.Random.Byte(1, 12).ToString("00");
                 var roomNumber = (f.Random.Short(10, 99) * 10).ToString("000");
 

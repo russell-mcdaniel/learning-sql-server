@@ -8,7 +8,7 @@ namespace Learning.DataGenerator.Generators
     {
         internal static IList<Department> Generate(Institution institution)
         {
-            var toCreate = 15;
+            var toCreate = 5;
 
             var names = GenerateDepartmentNames(toCreate);
             var nameIndex = 0;
