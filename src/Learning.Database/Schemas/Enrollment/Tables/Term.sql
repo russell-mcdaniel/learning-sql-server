@@ -1,9 +1,10 @@
 ﻿--
 -- Design Notes
 --
--- Providing terms in temporal order is not straightfoward in this design. See
--- the notes on TermSystem and TermPeriod and reconsider the design.
--- 
+-- > In Progress: Simplifying the model for terms. 
+--
+-- Terms are modeled based on a semester-based academic year.
+--
 -- It is not strictly necessary to provide a surrogate key, but it makes it
 -- easier to reference specific instances of this entity from other entities.
 --
@@ -17,22 +18,21 @@ CREATE TABLE [Enrollment].[Term]
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
 	[TermKey]								uniqueidentifier		NOT NULL,
 	[AcademicYear]							char(9)					NOT NULL,	-- "YYYY-YYYY"
-	[TermSystemKey]							uniqueidentifier		NOT NULL,
-	[TermPeriodKey]							uniqueidentifier		NOT NULL,
-	[CalendarYear]							smallint				NOT NULL
+	[CalendarYear]							smallint				NOT NULL,
+	[SeasonName]							nvarchar(20)			NOT NULL
 );
 GO
 
 ALTER TABLE [Enrollment].[Term]
 	ADD CONSTRAINT [pk_Term]
-	PRIMARY KEY ([InstitutionKey], [TermKey])
+	PRIMARY KEY CLUSTERED ([InstitutionKey], [TermKey])
 	WITH (FILLFACTOR = 90)
 	ON [PRIMARY];
 GO
 
 ALTER TABLE [Enrollment].[Term]
 	ADD CONSTRAINT [uk_Term_InstitutionKeyTermSystemKeyAcademicYearTermPeriodKey]
-	UNIQUE CLUSTERED ([InstitutionKey], [TermSystemKey], [AcademicYear], [TermPeriodKey])
+	UNIQUE ([InstitutionKey], [AcademicYear], [CalendarYear])
 	WITH (FILLFACTOR = 90)
 	ON [PRIMARY];
 GO
@@ -44,16 +44,8 @@ ALTER TABLE [Enrollment].[Term]
 	REFERENCES [Organization].[Institution] ([InstitutionKey])
 GO
 
--- The foreign key to the term system.
+-- The term season name must be "Fall" or "Spring".
 ALTER TABLE [Enrollment].[Term]
-	ADD CONSTRAINT [fk_Term_TermSystemKey_TermSystem]
-	FOREIGN KEY ([TermSystemKey])
-	REFERENCES [Core].[TermSystem] ([TermSystemKey]);
-GO
-
--- The foreign key to the term period.
-ALTER TABLE [Enrollment].[Term]
-	ADD CONSTRAINT [fk_Term_TermSystemKeyTermPeriodKey_TermPeriod]
-	FOREIGN KEY ([TermSystemKey], [TermPeriodKey])
-	REFERENCES [Core].[TermPeriod] ([TermSystemKey], [TermPeriodKey]);
+	ADD CONSTRAINT [ck_Term_SeasonName]
+	CHECK ([SeasonName]=N'Fall' OR [SeasonName]=N'Spring');
 GO

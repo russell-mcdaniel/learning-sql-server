@@ -106,8 +106,6 @@
     <Build Include="Database\Schemas\Enrollment.sql" />
     <Build Include="Schemas\Organization\Tables\Institution.sql" />
     <Build Include="Database\Schemas\Core.sql" />
-    <Build Include="Schemas\Core\Tables\TermSystem.sql" />
-    <Build Include="Schemas\Core\Tables\TermPeriod.sql" />
     <Build Include="Schemas\Enrollment\Tables\Term.sql" />
     <Build Include="Schemas\Organization\Tables\Campus.sql" />
     <Build Include="Schemas\Organization\Tables\Building.sql" />

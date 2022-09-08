@@ -15,7 +15,5 @@ namespace Learning.DataGenerator.Data
         void Insert(IEnumerable<Institution> institutions);
 
         void Insert(IEnumerable<Professor> professors);
-
-        void Insert(IEnumerable<TermSystem> systems);
     }
 }

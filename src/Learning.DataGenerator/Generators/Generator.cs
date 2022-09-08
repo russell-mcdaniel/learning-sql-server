@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Learning.DataGenerator.Data;
-using Learning.DataGenerator.Factories;
 using Learning.DataGenerator.Models;
 
 namespace Learning.DataGenerator.Generators
@@ -22,8 +21,7 @@ namespace Learning.DataGenerator.Generators
         {
             _logger.LogInformation("Data generation is starting...");
 
-            var systems = GenerateTermSystems();
-            var institutions = GenerateInstitutions(systems);
+            var institutions = GenerateInstitutions();
 
             foreach (var institution in institutions)
             {
@@ -98,11 +96,11 @@ namespace Learning.DataGenerator.Generators
             return departments;
         }
 
-        private IList<Institution> GenerateInstitutions(IList<TermSystem> systems)
+        private IList<Institution> GenerateInstitutions()
         {
             _logger.LogInformation("Institution generation is starting...");
 
-            var institutions = InstitutionGenerator.Generate(systems);
+            var institutions = InstitutionGenerator.Generate();
             _repository.Insert(institutions);
 
             _logger.LogInformation("Institution generation is complete.");
@@ -120,18 +118,6 @@ namespace Learning.DataGenerator.Generators
             _logger.LogInformation("Professor generation is complete.");
 
             return professors;
-        }
-
-        private IList<TermSystem> GenerateTermSystems()
-        {
-            _logger.LogInformation("Term system generation is starting...");
-
-            var systems = TermSystemGenerator.Generate();
-            _repository.Insert(systems);
-
-            _logger.LogInformation("Term system generation is complete.");
-
-            return systems;
         }
     }
 }

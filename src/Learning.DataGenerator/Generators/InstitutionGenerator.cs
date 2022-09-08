@@ -6,7 +6,7 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class InstitutionGenerator
     {
-        internal static IList<Institution> Generate(IList<TermSystem> systems)
+        internal static IList<Institution> Generate()
         {
             var toCreate = 10;
 
@@ -20,8 +20,7 @@ namespace Learning.DataGenerator.Generators
                 .StrictMode(true)
                 .RuleFor(i => i.InstitutionKey, f => Guid.NewGuid())
                 .RuleFor(i => i.DisplayName, f => names[nameIndex++])
-                .RuleFor(i => i.LocationName, f => locations[locationIndex++])
-                .RuleFor(i => i.TermSystem, f => f.PickRandom(systems));
+                .RuleFor(i => i.LocationName, f => locations[locationIndex++]);
 
             var institutions = institutionFaker.Generate(toCreate);
 

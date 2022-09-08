@@ -64,8 +64,8 @@ namespace Learning.DataGenerator.Data
                 _config.GetConnectionString("LearningDatabase"));
 
             connection.Execute(
-                "INSERT INTO Organization.Institution (InstitutionKey, DisplayName, LocationName, TermSystemKey) VALUES (@InstitutionKey, @DisplayName, @LocationName, @TermSystemKey);",
-                from i in institutions select new { i.InstitutionKey, i.DisplayName, i.LocationName, i.TermSystem.TermSystemKey });
+                "INSERT INTO Organization.Institution (InstitutionKey, DisplayName, LocationName) VALUES (@InstitutionKey, @DisplayName, @LocationName);",
+                from i in institutions select new { i.InstitutionKey, i.DisplayName, i.LocationName });
         }
 
         public void Insert(IEnumerable<Professor> professors)
@@ -76,23 +76,6 @@ namespace Learning.DataGenerator.Data
             connection.Execute(
                 "INSERT INTO Organization.Professor (InstitutionKey, DepartmentKey, ProfessorKey, DisplayName) VALUES (@InstitutionKey, @DepartmentKey, @ProfessorKey, @DisplayName);",
                 from p in professors select new { p.Institution.InstitutionKey, p.Department.DepartmentKey, p.ProfessorKey, p.DisplayName });
-        }
-
-        public void Insert(IEnumerable<TermSystem> systems)
-        {
-            using var connection = DbConnectionFactory.GetConnection(
-                _config.GetConnectionString("LearningDatabase"));
-
-            foreach (var system in systems)
-            {
-                connection.Execute(
-                    "INSERT INTO Core.TermSystem (TermSystemKey, DisplayName) VALUES (@TermSystemKey, @DisplayName);",
-                    new { system.TermSystemKey, system.DisplayName });
-
-                connection.Execute(
-                    "INSERT INTO Core.TermPeriod (TermSystemKey, TermPeriodKey, DisplayName, Ordinal) VALUES (@TermSystemKey, @TermPeriodKey, @DisplayName, @Ordinal);",
-                    from tp in system.TermPeriods select new { system.TermSystemKey, tp.TermPeriodKey, tp.DisplayName, tp.Ordinal });
-            }
         }
     }
 }
