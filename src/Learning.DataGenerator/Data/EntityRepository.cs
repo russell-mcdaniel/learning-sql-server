@@ -58,6 +58,16 @@ namespace Learning.DataGenerator.Data
                 from c in courses select new { c.Institution.InstitutionKey, c.Department.DepartmentKey, c.CourseKey, c.DisplayName, c.Level });
         }
 
+        public void Insert(IEnumerable<CourseOffering> courseOfferings)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Enrollment.CourseOffering (InstitutionKey, CourseOfferingKey, DepartmentKey, CourseKey, ProfessorKey, CampusKey, BuildingKey, ClassroomKey, TermKey) VALUES (@InstitutionKey, @CourseOfferingKey, @DepartmentKey, @CourseKey, @ProfessorKey, @CampusKey, @BuildingKey, @ClassroomKey, @TermKey);",
+                from co in courseOfferings select new { co.Institution.InstitutionKey, co.CourseOfferingKey, co.Department.DepartmentKey, co.Course.CourseKey, co.Professor.ProfessorKey, co.Campus.CampusKey, co.Building.BuildingKey, co.Classroom.ClassroomKey, co.Term.TermKey });
+        }
+
         public void Insert(IEnumerable<Department> departments)
         {
             using var connection = DbConnectionFactory.GetConnection(
@@ -106,6 +116,26 @@ namespace Learning.DataGenerator.Data
             connection.Execute(
                 "INSERT INTO Curriculum.Program (InstitutionKey, DepartmentKey, ProgramKey, DisplayName, ProgramType) VALUES (@InstitutionKey, @DepartmentKey, @ProgramKey, @DisplayName, @ProgramType);",
                 from p in programs select new { p.Institution.InstitutionKey, p.Department.DepartmentKey, p.ProgramKey, p.DisplayName, p.ProgramType });
+        }
+
+        public void Insert(IEnumerable<Student> students)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Enrollment.Student (InstitutionKey, StudentKey, DisplayName) VALUES (@InstitutionKey, @StudentKey, @DisplayName);",
+                from s in students select new { s.Institution.InstitutionKey, s.StudentKey, s.DisplayName });
+        }
+
+        public void Insert(IEnumerable<Term> terms)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Enrollment.Term (InstitutionKey, TermKey, AcademicYear, CalendarYear, SeasonName) VALUES (@InstitutionKey, @TermKey, @AcademicYear, @CalendarYear, @SeasonName);",
+                from t in terms select new { t.Institution.InstitutionKey, t.TermKey, t.AcademicYear, t.CalendarYear, t.SeasonName });
         }
     }
 }

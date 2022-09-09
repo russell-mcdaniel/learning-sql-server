@@ -27,9 +27,6 @@ namespace Learning.DataGenerator.Generators
         /// <summary>
         /// Generates a unique set of department names.
         /// </summary>
-        /// <remarks>
-        /// Should this standardize on actual university programs for realism?
-        /// </remarks>
         private static IList<string> GenerateDepartmentNames(int namesToCreate)
         {
             var nameSet = new HashSet<string>();

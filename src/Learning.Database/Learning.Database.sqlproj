@@ -117,6 +117,7 @@
     <Build Include="Schemas\Curriculum\Tables\ProgramCourse.sql" />
     <Build Include="Schemas\Enrollment\Tables\Student.sql" />
     <Build Include="Schemas\Enrollment\Tables\CourseOffering.sql" />
-    <Build Include="Schemas\Enrollment\Tables\CourseEnrollment.sql" />
+    <Build Include="Schemas\Enrollment\Tables\CourseOfferingEnrollment.sql" />
+    <Build Include="Schemas\Enrollment\Tables\StudentProgram.sql" />
   </ItemGroup>
 </Project>

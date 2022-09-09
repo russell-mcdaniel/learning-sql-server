@@ -12,6 +12,8 @@ namespace Learning.DataGenerator.Data
 
         void Insert(IEnumerable<Course> courses);
 
+        void Insert(IEnumerable<CourseOffering> courseOfferings);
+
         void Insert(IEnumerable<Department> departments);
 
         void Insert(IEnumerable<Institution> institutions);
@@ -21,5 +23,9 @@ namespace Learning.DataGenerator.Data
         void Insert(IEnumerable<ProgramCourse> programCourses);
 
         void Insert(IEnumerable<ProgramLdb> programs);
+
+        void Insert(IEnumerable<Student> students);
+
+        void Insert(IEnumerable<Term> terms);
     }
 }

@@ -1,4 +1,13 @@
-﻿CREATE TABLE [Enrollment].[Student]
+﻿--
+-- Design Notes
+--
+-- For the initial design, the display name is required to be unique to
+-- support differentiating students. This is not realistic and will run
+-- into the limits of the name generator as more students are added.
+--
+-- Implement a student ID for uniqueness and permit duplicate names.
+--
+CREATE TABLE [Enrollment].[Student]
 (
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
 	[StudentKey]							uniqueidentifier		NOT NULL,
@@ -13,8 +22,7 @@ ALTER TABLE [Enrollment].[Student]
 	ON [PRIMARY];
 GO
 
--- Enforce unique student display names for each institution. In the real world,
--- this is not a realistic constraint, but it is better for demo purposes.
+-- Enforce unique student display names for each institution.
 ALTER TABLE [Enrollment].[Student]
 	ADD CONSTRAINT [uk_Student_InstitutionKeyDisplayName]
 	UNIQUE ([InstitutionKey], [DisplayName])
