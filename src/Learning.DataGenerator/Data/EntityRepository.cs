@@ -68,6 +68,16 @@ namespace Learning.DataGenerator.Data
                 from co in courseOfferings select new { co.Institution.InstitutionKey, co.CourseOfferingKey, co.Department.DepartmentKey, co.Course.CourseKey, co.Professor.ProfessorKey, co.Campus.CampusKey, co.Building.BuildingKey, co.Classroom.ClassroomKey, co.Term.TermKey });
         }
 
+        public void Insert(IEnumerable<CourseOfferingEnrollment> courseOfferingEnrollments)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Enrollment.CourseOfferingEnrollment (InstitutionKey, CourseOfferingKey, StudentKey, Score) VALUES (@InstitutionKey, @CourseOfferingKey, @StudentKey, @Score);",
+                from coe in courseOfferingEnrollments select new { coe.Institution.InstitutionKey, coe.CourseOffering.CourseOfferingKey, coe.Student.StudentKey, coe.Score });
+        }
+
         public void Insert(IEnumerable<Department> departments)
         {
             using var connection = DbConnectionFactory.GetConnection(

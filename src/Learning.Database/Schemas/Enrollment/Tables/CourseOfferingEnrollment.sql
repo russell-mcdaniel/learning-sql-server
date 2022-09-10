@@ -41,6 +41,13 @@ ALTER TABLE [Enrollment].[CourseOfferingEnrollment]
 	CHECK ([Score]>=(0) AND [Score]<=(100));
 GO
 
+-- Supports the foreign key to the institution.
+CREATE NONCLUSTERED INDEX [ix_CourseOfferingEnrollment_InstitutionKey]
+	ON [Enrollment].[CourseOfferingEnrollment] ([InstitutionKey])
+	WITH (FILLFACTOR = 90)
+	ON [PRIMARY];
+GO
+
 -- Supports the foreign key to the student.
 CREATE NONCLUSTERED INDEX [ix_CourseOfferingEnrollment_InstitutionKeyStudentKey]
 	ON [Enrollment].[CourseOfferingEnrollment] ([InstitutionKey], [StudentKey])

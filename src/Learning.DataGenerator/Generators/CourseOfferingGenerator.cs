@@ -25,9 +25,9 @@ namespace Learning.DataGenerator.Generators
 
             var f = new Faker();
 
-            foreach (var term in terms)
+            foreach (var professor in professors)
             {
-                foreach (var professor in professors)
+                foreach (var term in terms)
                 {
                     for (var courseOfferingsCreated = 0; courseOfferingsCreated < courseOfferingsToCreate; courseOfferingsCreated++)
                     {

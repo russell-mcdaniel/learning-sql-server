@@ -36,12 +36,12 @@ namespace Learning.DataGenerator.Generators
 
             // TODO: Move to configuration.
             var institutionsToCreate = 1;
-            var campusesToCreate = 2;               // Per institution.
-            var buildingsToCreate = 5;              // Per campus.
-            var classroomsToCreate = 10;            // Per building.
-            var departmentsToCreate = 5;            // Per institution.
-            var programsToCreate = 4;               // Per department.
-            var coursesToCreate = 20;               // Per department.
+            var campusesToCreate = 2;                   // Per institution.
+            var buildingsToCreate = 5;                  // Per campus.
+            var classroomsToCreate = 10;                // Per building.
+            var departmentsToCreate = 5;                // Per institution.
+            var programsToCreate = 4;                   // Per department.
+            var coursesToCreate = 20;                   // Per department.
 
             // Per program by program type.
             var programCoursesToCreate = new Dictionary<string, int>
@@ -50,8 +50,8 @@ namespace Learning.DataGenerator.Generators
                 { ProgramType.Minor, 4 }
             };
 
-            var professorsToCreate = 10;            // Per department.
-            var studentsToCreate = 9000;            // Per institution.
+            var professorsToCreate = 10;                // Per department.
+            var studentsToCreate = 9000;                // Per institution.
 
             // Per student.
             var studentProgramsToCreate = new Dictionary<string, (int, int)>
@@ -61,11 +61,14 @@ namespace Learning.DataGenerator.Generators
                 { StudentProgramDeclaration.MajorOnly, (1, 0) }
             };
 
-            var academicYearsToCreate = 12;         // Per institution in years of terms.
-            var courseOfferingsToCreate = 3;        // Per professor.
+            var academicYearsToCreate = 12;             // Per institution in years of terms.
+            var courseOfferingsToCreate = 3;            // Per professor per term.
+            var courseOfferingEnrollmentsToCreate = 5;  // Per student per term.
 
             #endregion
 
+            // TODO: Refactor logic around population by institution to enable
+            //       application to release context memory between institutions.
             GenerateInstitutions(institutionsToCreate);
             GenerateCampuses(campusesToCreate);
             GenerateBuildings(buildingsToCreate);
@@ -82,7 +85,7 @@ namespace Learning.DataGenerator.Generators
 
             GenerateTerms(academicYearsToCreate);
             GenerateCourseOfferings(courseOfferingsToCreate);
-            //GenerateCourseOfferingEnrollments();
+            GenerateCourseOfferingEnrollments(courseOfferingEnrollmentsToCreate);
 
             _logger.LogInformation("Generation is complete.");
         }
@@ -170,6 +173,25 @@ namespace Learning.DataGenerator.Generators
             }
 
             _logger.LogInformation("Generated course offerings.");
+        }
+
+        private void GenerateCourseOfferingEnrollments(int courseOfferingEnrollmentsToCreate)
+        {
+            _logger.LogInformation("Generating course offering enrollments...");
+
+            foreach (var institution in _context.Institutions)
+            {
+                _logger.LogInformation("Generating course offering enrollments for {Institution}...", institution.DisplayName);
+
+                var courseOfferings = (from c in _context.CourseOfferings where c.Institution == institution select c).ToList();
+                var students = (from s in _context.Students where s.Institution == institution select s).ToList();
+                var terms = (from t in _context.Terms where t.Institution == institution select t).ToList();
+
+                var courseOfferingEnrollments = CourseOfferingEnrollmentGenerator.Generate(courseOfferingEnrollmentsToCreate, courseOfferings, students, terms);
+                _repository.Insert(courseOfferingEnrollments);
+            }
+
+            _logger.LogInformation("Generated course offering enrollments.");
         }
 
         private void GenerateDepartments(int departmentsToCreate)
