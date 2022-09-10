@@ -4,15 +4,13 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class TermGenerator
     {
-        internal static IList<Term> Generate(Institution institution)
+        internal static IList<Term> Generate(int academicYearsToCreate, Institution institution)
         {
-            var toCreate = 12;
-
             // The year refers to the beginning of an academic year, so it is the
-            // fall term (semester) for the {Year}-{Year + 1} academic year.
-            //
+            // fall term (semester) for the "{Year}-{Year + 1}" academic year.
+
             // The range is inclusive, so add one to get the correct starting year.
-            var yearStart = DateTime.Now.Year - toCreate + 1;
+            var yearStart = DateTime.Now.Year - academicYearsToCreate + 1;
             var yearEnd = DateTime.Now.Year;
 
             var terms = new List<Term>();

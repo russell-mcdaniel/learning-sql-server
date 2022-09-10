@@ -28,13 +28,6 @@ ALTER TABLE [Enrollment].[CourseOffering]
 	ON [PRIMARY];
 GO
 
-ALTER TABLE [Enrollment].[CourseOffering]
-	ADD CONSTRAINT [uk_CourseOffering_InstitutionKeyDepartmentKeyCourseKeyTermKey]
-	UNIQUE ([InstitutionKey], [DepartmentKey], [CourseKey], [TermKey])
-	WITH (FILLFACTOR = 90)
-	ON [PRIMARY];
-GO
-
 -- The foreign key to the institution.
 ALTER TABLE [Enrollment].[CourseOffering]
 	ADD CONSTRAINT [fk_CourseOffering_InstitutionKey_Institution]
@@ -49,6 +42,13 @@ ALTER TABLE [Enrollment].[CourseOffering]
 	REFERENCES [Organization].[Department] ([InstitutionKey], [DepartmentKey]);
 GO
 
+-- The foreign key to the course.
+ALTER TABLE [Enrollment].[CourseOffering]
+	ADD CONSTRAINT [fk_CourseOffering_InstitutionKeyDepartmentKeyCourseKey_Course]
+	FOREIGN KEY ([InstitutionKey], [DepartmentKey], [CourseKey])
+	REFERENCES [Curriculum].[Course] ([InstitutionKey], [DepartmentKey], [CourseKey]);
+GO
+
 -- The foreign key to the professor.
 ALTER TABLE [Enrollment].[CourseOffering]
 	ADD CONSTRAINT [fk_CourseOffering_InstitutionKeyDepartmentKeyProfessorKey_Professor]
@@ -56,11 +56,25 @@ ALTER TABLE [Enrollment].[CourseOffering]
 	REFERENCES [Organization].[Professor] ([InstitutionKey], [DepartmentKey], [ProfessorKey]);
 GO
 
--- The foreign key to the course.
+-- The foreign key to the campus.
 ALTER TABLE [Enrollment].[CourseOffering]
-	ADD CONSTRAINT [fk_CourseOffering_InstitutionKeyDepartmentKeyCourseKey_Course]
-	FOREIGN KEY ([InstitutionKey], [DepartmentKey], [CourseKey])
-	REFERENCES [Curriculum].[Course] ([InstitutionKey], [DepartmentKey], [CourseKey]);
+	ADD CONSTRAINT [fk_CourseOffering_InstitutionKeyCampusKey_Campus]
+	FOREIGN KEY ([InstitutionKey], [CampusKey])
+	REFERENCES [Organization].[Campus] ([InstitutionKey], [CampusKey]);
+GO
+
+-- The foreign key to the building.
+ALTER TABLE [Enrollment].[CourseOffering]
+	ADD CONSTRAINT [fk_CourseOffering_InstitutionKeyCampusKeyBuildingKey_Building]
+	FOREIGN KEY ([InstitutionKey], [CampusKey], [BuildingKey])
+	REFERENCES [Organization].[Building] ([InstitutionKey], [CampusKey], [BuildingKey]);
+GO
+
+-- The foreign key to the classroom.
+ALTER TABLE [Enrollment].[CourseOffering]
+	ADD CONSTRAINT [fk_CourseOffering_InstitutionKeyCampusKeyBuildingKeyClassroomKey_Classroom]
+	FOREIGN KEY ([InstitutionKey], [CampusKey], [BuildingKey], [ClassroomKey])
+	REFERENCES [Organization].[Classroom] ([InstitutionKey], [CampusKey], [BuildingKey], [ClassroomKey]);
 GO
 
 -- The foreign key to the term.
@@ -70,9 +84,23 @@ ALTER TABLE [Enrollment].[CourseOffering]
 	REFERENCES [Enrollment].[Term] ([InstitutionKey], [TermKey]);
 GO
 
+-- Supports the foreign key to the institution.
+CREATE NONCLUSTERED INDEX [ix_CourseOffering_InstitutionKey]
+	ON [Enrollment].[CourseOffering] ([InstitutionKey])
+	WITH (FILLFACTOR = 90)
+	ON [PRIMARY];
+GO
+
 -- Supports the foreign key to the department.
 CREATE NONCLUSTERED INDEX [ix_CourseOffering_InstitutionKeyDepartmentKey]
 	ON [Enrollment].[CourseOffering] ([InstitutionKey], [DepartmentKey])
+	WITH (FILLFACTOR = 90)
+	ON [PRIMARY];
+GO
+
+-- Supports the foreign key to the course.
+CREATE NONCLUSTERED INDEX [ix_CourseOffering_InstitutionKeyDepartmentKeyCourseKey]
+	ON [Enrollment].[CourseOffering] ([InstitutionKey], [DepartmentKey], [CourseKey])
 	WITH (FILLFACTOR = 90)
 	ON [PRIMARY];
 GO
@@ -84,9 +112,23 @@ CREATE NONCLUSTERED INDEX [ix_CourseOffering_InstitutionKeyDepartmentKeyProfesso
 	ON [PRIMARY];
 GO
 
--- Supports the foreign key to the course.
-CREATE NONCLUSTERED INDEX [ix_CourseOffering_InstitutionKeyDepartmentKeyCourseKey]
-	ON [Enrollment].[CourseOffering] ([InstitutionKey], [DepartmentKey], [CourseKey])
+-- Supports the foreign key to the campus.
+CREATE NONCLUSTERED INDEX [ix_CourseOffering_InstitutionKeyCampusKey]
+	ON [Enrollment].[CourseOffering] ([InstitutionKey], [CampusKey])
+	WITH (FILLFACTOR = 90)
+	ON [PRIMARY];
+GO
+
+-- Supports the foreign key to the building.
+CREATE NONCLUSTERED INDEX [ix_CourseOffering_InstitutionKeyCampusKeyBuildingKey]
+	ON [Enrollment].[CourseOffering] ([InstitutionKey], [CampusKey], [BuildingKey])
+	WITH (FILLFACTOR = 90)
+	ON [PRIMARY];
+GO
+
+-- Supports the foreign key to the classroom.
+CREATE NONCLUSTERED INDEX [ix_CourseOffering_InstitutionKeyCampusKeyBuildingKeyClassroomKey]
+	ON [Enrollment].[CourseOffering] ([InstitutionKey], [CampusKey], [BuildingKey], [ClassroomKey])
 	WITH (FILLFACTOR = 90)
 	ON [PRIMARY];
 GO

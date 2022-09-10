@@ -6,11 +6,9 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class DepartmentGenerator
     {
-        internal static IList<Department> Generate(Institution institution)
+        internal static IList<Department> Generate(int departmentsToCreate, Institution institution)
         {
-            var toCreate = 5;
-
-            var names = GenerateDepartmentNames(toCreate);
+            var names = GenerateDepartmentNames(departmentsToCreate);
             var nameIndex = 0;
 
             var departmentFaker = new Faker<Department>()
@@ -19,7 +17,7 @@ namespace Learning.DataGenerator.Generators
                 .RuleFor(d => d.DepartmentKey, f => Guid.NewGuid())
                 .RuleFor(d => d.DisplayName, f => names[nameIndex++]);
 
-            var departments = departmentFaker.Generate(toCreate);
+            var departments = departmentFaker.Generate(departmentsToCreate);
 
             return departments;
         }

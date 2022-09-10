@@ -128,6 +128,16 @@ namespace Learning.DataGenerator.Data
                 from s in students select new { s.Institution.InstitutionKey, s.StudentKey, s.DisplayName });
         }
 
+        public void Insert(IEnumerable<StudentProgram> studentPrograms)
+        {
+            using var connection = DbConnectionFactory.GetConnection(
+                _config.GetConnectionString("LearningDatabase"));
+
+            connection.Execute(
+                "INSERT INTO Enrollment.StudentProgram (InstitutionKey, StudentKey, DepartmentKey, ProgramKey) VALUES (@InstitutionKey, @StudentKey, @DepartmentKey, @ProgramKey);",
+                from sp in studentPrograms select new { sp.Institution.InstitutionKey, sp.Student.StudentKey, sp.Department.DepartmentKey, sp.Program.ProgramKey });
+        }
+
         public void Insert(IEnumerable<Term> terms)
         {
             using var connection = DbConnectionFactory.GetConnection(

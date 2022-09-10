@@ -7,11 +7,9 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class CourseGenerator
     {
-        internal static IList<Course> Generate(Department department)
+        internal static IList<Course> Generate(int coursesToCreate, Department department)
         {
-            var toCreate = 20;
-
-            var names = GenerateCourseNames(toCreate);
+            var names = GenerateCourseNames(coursesToCreate);
             var nameIndex = 0;
 
             var courseFaker = new Faker<Course>()
@@ -22,7 +20,7 @@ namespace Learning.DataGenerator.Generators
                 .RuleFor(c => c.DisplayName, f => names[nameIndex++])
                 .RuleFor(c => c.Level, f => f.Random.Short(100, 499));
 
-            var courses = courseFaker.Generate(toCreate);
+            var courses = courseFaker.Generate(coursesToCreate);
 
             return courses;
         }

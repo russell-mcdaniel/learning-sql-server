@@ -5,13 +5,13 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class ProgramCourseGenerator
     {
-        internal static IList<ProgramCourse> Generate(IList<ProgramLdb> programs, IList<Course> courses)
+        internal static IList<ProgramCourse> Generate(IDictionary<string, int> programCoursesToCreate, IList<ProgramLdb> programs, IList<Course> courses)
         {
             var programCourses = new List<ProgramCourse>();
 
             foreach (var program in programs)
             {
-                var coursesToAssign = GetCoursesToAssign(program);
+                var coursesToAssign = programCoursesToCreate[program.ProgramType];
                 var coursesAssigned = 0;
 
                 if (coursesToAssign > courses.Count)
@@ -42,21 +42,6 @@ namespace Learning.DataGenerator.Generators
             }
 
             return programCourses;
-        }
-
-        private static int GetCoursesToAssign(ProgramLdb program)
-        {
-            switch (program.ProgramType)
-            {
-                case "Major":
-                    return 12;
-
-                case "Minor":
-                    return 4;
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(program.ProgramType), program.ProgramType, "The program type is not recognized.");
-            }
         }
     }
 }

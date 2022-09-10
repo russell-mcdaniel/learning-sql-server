@@ -26,6 +26,8 @@ namespace Learning.DataGenerator.Data
 
         void Insert(IEnumerable<Student> students);
 
+        void Insert(IEnumerable<StudentProgram> studentPrograms);
+
         void Insert(IEnumerable<Term> terms);
     }
 }

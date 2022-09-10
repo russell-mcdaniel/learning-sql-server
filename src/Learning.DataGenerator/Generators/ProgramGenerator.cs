@@ -7,11 +7,9 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class ProgramGenerator
     {
-        internal static IList<ProgramLdb> Generate(Department department)
+        internal static IList<ProgramLdb> Generate(int programsToCreate, Department department)
         {
-            var toCreate = 4;
-
-            var names = GenerateProgramNames(toCreate);
+            var names = GenerateProgramNames(programsToCreate);
             var nameIndex = 0;
 
             var programFaker = new Faker<ProgramLdb>()
@@ -22,7 +20,7 @@ namespace Learning.DataGenerator.Generators
                 .RuleFor(p => p.DisplayName, f => names[nameIndex++])
                 .RuleFor(p => p.ProgramType, f => f.PickRandom(new[] { "Major", "Minor" }).ClampLength(max: 10));
 
-            var programs = programFaker.Generate(toCreate);
+            var programs = programFaker.Generate(programsToCreate);
 
             return programs;
         }

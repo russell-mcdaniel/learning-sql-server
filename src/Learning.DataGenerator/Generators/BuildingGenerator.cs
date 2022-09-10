@@ -6,11 +6,9 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class BuildingGenerator
     {
-        internal static IList<Building> Generate(Campus campus)
+        internal static IList<Building> Generate(int buildingsToCreate, Campus campus)
         {
-            var toCreate = 5;
-
-            var names = GenerateBuildingNames(toCreate);
+            var names = GenerateBuildingNames(buildingsToCreate);
             var nameIndex = 0;
 
             var buildingFaker = new Faker<Building>()
@@ -20,7 +18,7 @@ namespace Learning.DataGenerator.Generators
                 .RuleFor(b => b.BuildingKey, f => Guid.NewGuid())
                 .RuleFor(b => b.DisplayName, f => names[nameIndex++]);
 
-            var buildings = buildingFaker.Generate(toCreate);
+            var buildings = buildingFaker.Generate(buildingsToCreate);
 
             return buildings;
         }

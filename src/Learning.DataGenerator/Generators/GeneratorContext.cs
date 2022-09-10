@@ -13,6 +13,8 @@ namespace Learning.DataGenerator.Generators
 
         public IList<Course> Courses { get; } = new List<Course>();
 
+        public IList<CourseOffering> CourseOfferings { get; } = new List<CourseOffering>();
+
         public IList<Classroom> Classrooms { get; } = new List<Classroom>();
 
         public IList<Department> Departments { get; } = new List<Department>();
@@ -26,6 +28,8 @@ namespace Learning.DataGenerator.Generators
         public IList<ProgramCourse> ProgramCourses { get; } = new List<ProgramCourse>();
 
         public IList<Student> Students { get; } = new List<Student>();
+
+        public IList<StudentProgram> StudentPrograms { get; } = new List<StudentProgram>();
 
         public IList<Term> Terms { get; } = new List<Term>();
     }

@@ -6,14 +6,12 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class InstitutionGenerator
     {
-        internal static IList<Institution> Generate()
+        internal static IList<Institution> Generate(int institutionsToCreate)
         {
-            var toCreate = 2;
-
-            var names = GenerateInstitutionNames(toCreate);
+            var names = GenerateInstitutionNames(institutionsToCreate);
             var nameIndex = 0;
 
-            var locations = GenerateLocationNames(toCreate);
+            var locations = GenerateLocationNames(institutionsToCreate);
             var locationIndex = 0;
 
             var institutionFaker = new Faker<Institution>()
@@ -22,7 +20,7 @@ namespace Learning.DataGenerator.Generators
                 .RuleFor(i => i.DisplayName, f => names[nameIndex++])
                 .RuleFor(i => i.LocationName, f => locations[locationIndex++]);
 
-            var institutions = institutionFaker.Generate(toCreate);
+            var institutions = institutionFaker.Generate(institutionsToCreate);
 
             return institutions;
         }

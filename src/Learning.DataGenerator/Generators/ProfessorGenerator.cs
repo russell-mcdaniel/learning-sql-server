@@ -6,11 +6,9 @@ namespace Learning.DataGenerator.Generators
 {
     internal static class ProfessorGenerator
     {
-        internal static IList<Professor> Generate(Department department)
+        internal static IList<Professor> Generate(int professorsToCreate, Department department)
         {
-            var toCreate = 10;
-
-            var names = GenerateProfessorNames(toCreate);
+            var names = GenerateProfessorNames(professorsToCreate);
             var nameIndex = 0;
 
             var professorFaker = new Faker<Professor>()
@@ -20,7 +18,7 @@ namespace Learning.DataGenerator.Generators
                 .RuleFor(p => p.ProfessorKey, f => Guid.NewGuid())
                 .RuleFor(p => p.DisplayName, f => names[nameIndex++]);
 
-            var professors = professorFaker.Generate(toCreate);
+            var professors = professorFaker.Generate(professorsToCreate);
 
             return professors;
         }
