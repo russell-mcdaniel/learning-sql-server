@@ -1,6 +1,7 @@
-# ================================================================================
-# FUNCTIONS
-# ================================================================================
+param
+(
+    [switch] $CreateNewDatabase = $false
+)
 
 function Get-LoginPassword {
 
@@ -8,10 +9,6 @@ function Get-LoginPassword {
 
     return $Password
 }
-
-# ================================================================================
-# MAIN SCRIPT
-# ================================================================================
 
 # Configure Path
 $SqlPackageDirectory = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC"
@@ -43,4 +40,5 @@ SqlPackage `
     /TargetServerName:$ServerName `
     /TargetUser:$LoginName `
     /TargetPassword:$LoginPassword `
-    /TargetDatabaseName:$DatabaseName
+    /TargetDatabaseName:$DatabaseName `
+    /p:CreateNewDatabase=$CreateNewDatabase

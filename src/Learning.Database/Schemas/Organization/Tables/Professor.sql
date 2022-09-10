@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [Organization].[Professor]
 (
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
-	[DepartmentKey]							uniqueidentifier		NOT NULL,		-- It could be argued this should be an ordinary attribute.
+	[DepartmentKey]							uniqueidentifier		NOT NULL,
 	[ProfessorKey]							uniqueidentifier		NOT NULL,
-	[DisplayName]							nvarchar(30)			NOT NULL
+	[DisplayName]							nvarchar(40)			NOT NULL
 );
 GO
 
@@ -14,11 +14,10 @@ ALTER TABLE [Organization].[Professor]
 	ON [PRIMARY];
 GO
 
--- The name must be unique across the entire institution, not just the department. In the
--- real world, this is not a realistic constraint, but it is better for demo purposes.
+-- Enforce unique professor display names for each department.
 ALTER TABLE [Organization].[Professor]
 	ADD CONSTRAINT [uk_Professor_InstitutionKeyDepartmentKeyDisplayName]
-	UNIQUE ([InstitutionKey], [DisplayName])
+	UNIQUE ([InstitutionKey], [DepartmentKey], [DisplayName])
 	WITH (FILLFACTOR = 90)
 	ON [PRIMARY];
 GO

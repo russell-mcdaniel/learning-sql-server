@@ -28,6 +28,7 @@
     <AllowSnapshotIsolation>True</AllowSnapshotIsolation>
     <QueryStoreDesiredState>ReadWrite</QueryStoreDesiredState>
     <EnableFullTextSearch>False</EnableFullTextSearch>
+    <Recovery>SIMPLE</Recovery>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -105,8 +106,6 @@
     <Build Include="Database\Schemas\Enrollment.sql" />
     <Build Include="Schemas\Organization\Tables\Institution.sql" />
     <Build Include="Database\Schemas\Core.sql" />
-    <Build Include="Schemas\Core\Tables\TermSystem.sql" />
-    <Build Include="Schemas\Core\Tables\TermPeriod.sql" />
     <Build Include="Schemas\Enrollment\Tables\Term.sql" />
     <Build Include="Schemas\Organization\Tables\Campus.sql" />
     <Build Include="Schemas\Organization\Tables\Building.sql" />
@@ -114,12 +113,11 @@
     <Build Include="Schemas\Organization\Tables\Department.sql" />
     <Build Include="Schemas\Organization\Tables\Professor.sql" />
     <Build Include="Schemas\Curriculum\Tables\Course.sql" />
-    <Build Include="Schemas\Curriculum\Tables\Major.sql" />
-    <Build Include="Schemas\Curriculum\Tables\Minor.sql" />
-    <Build Include="Schemas\Curriculum\Tables\MajorCourse.sql" />
-    <Build Include="Schemas\Curriculum\Tables\MinorCourse.sql" />
+    <Build Include="Schemas\Curriculum\Tables\Program.sql" />
+    <Build Include="Schemas\Curriculum\Tables\ProgramCourse.sql" />
     <Build Include="Schemas\Enrollment\Tables\Student.sql" />
     <Build Include="Schemas\Enrollment\Tables\CourseOffering.sql" />
-    <Build Include="Schemas\Enrollment\Tables\CourseEnrollment.sql" />
+    <Build Include="Schemas\Enrollment\Tables\CourseOfferingEnrollment.sql" />
+    <Build Include="Schemas\Enrollment\Tables\StudentProgram.sql" />
   </ItemGroup>
 </Project>
