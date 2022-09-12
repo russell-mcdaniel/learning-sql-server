@@ -1,8 +1,6 @@
 ﻿--
 -- Design Notes
 --
--- > In Progress: Simplifying the model for terms. 
---
 -- Terms are modeled based on a semester-based academic year.
 --
 -- It is not strictly necessary to provide a surrogate key, but it makes it
@@ -31,7 +29,7 @@ ALTER TABLE [Enrollment].[Term]
 GO
 
 ALTER TABLE [Enrollment].[Term]
-	ADD CONSTRAINT [uk_Term_InstitutionKeyTermSystemKeyAcademicYearTermPeriodKey]
+	ADD CONSTRAINT [uk_Term_InstitutionKeyAcademicYearCalendarYear]
 	UNIQUE ([InstitutionKey], [AcademicYear], [CalendarYear])
 	WITH (FILLFACTOR = 90)
 	ON [PRIMARY];
