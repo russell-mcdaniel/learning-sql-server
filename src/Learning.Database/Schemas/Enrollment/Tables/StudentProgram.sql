@@ -15,6 +15,9 @@
 --
 -- This situation exists on other tables as well.
 --
+-- Once this is resolved, revisit the related unit test:
+-- * ForeignKeyConstraintsHaveSupportingIndexes
+--
 CREATE TABLE [Enrollment].[StudentProgram]
 (
 	[InstitutionKey]						uniqueidentifier		NOT NULL,
