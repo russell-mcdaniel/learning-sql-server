@@ -1,9 +1,9 @@
-use {Database};
+USE master;
 GO
 
-select
-	d.name						as database_name,
-	object_name(p.object_id)	as object_name,
+SELECT
+	d.name						AS database_name,
+	object_name(p.object_id)	AS object_name,
 	l.resource_type,
 	l.resource_subtype,
 	l.request_mode,
@@ -13,16 +13,16 @@ select
 	p.partition_number,
 	p.rows
 --	l.*
-from
+FROM
 	sys.dm_tran_locks l
-inner join
+INNER JOIN
 	sys.databases d
-on
+ON
 	d.database_id = l.resource_database_id
-left outer join
+LEFT OUTER JOIN
 	sys.partitions p
-on
+ON
 	p.hobt_id = l.resource_associated_entity_id
-order by
+ORDER BY
 	l.resource_database_id;
 GO
