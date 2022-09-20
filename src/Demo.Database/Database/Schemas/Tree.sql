@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Tree]
+	AUTHORIZATION [dbo];
+GO

@@ -8,7 +8,9 @@ The directory contents are described in the following table.
 
 | Directory        | Purpose          |
 |------------------|------------------|
-| diagnostics      | For monitoring and diagnostics scripts. |
-| learning         | For the [Learning database](../../../wiki/Learning-Database). |
-| ms-samples       | For the Microsoft sample databases. |
-| snippets         | For small, one-off problems and techniques. |
+| databases        | For specific databases. |
+| .../learning      | For the [Learning database](../../../wiki/Learning-Database). |
+| .../ms-samples    | For the Microsoft sample databases. |
+| .../sql-demo      | For the SqlDemo database (in this repository). |
+| diagnostics      | To assist with diagnostics and monitoring. |
+| snippets         | For one-off examples and techniques. |
