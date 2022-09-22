@@ -1,4 +1,4 @@
-﻿PRINT N'Populating AlCategory...';
+﻿PRINT N'Populating Tree.AlCategory...';
 GO
 
 -- Randomization is incorporated into the ID values to demonstrate that

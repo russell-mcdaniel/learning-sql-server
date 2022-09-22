@@ -10,6 +10,7 @@ PRINT N'Populating data...';
 GO
 
 :r .\Data\Tree.AlCategory.sql
+:r .\Data\Tree.CtCategory.sql
 
 -- ================================================================================
 -- POST-DEPLOYMENT SCRIPTS END

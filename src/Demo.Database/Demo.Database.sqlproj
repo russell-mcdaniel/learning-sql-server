@@ -88,6 +88,11 @@
     <Build Include="Schemas\Tree\Procedures\AlCategoryMove.sql" />
     <Build Include="Schemas\Tree\Procedures\AlCategoryDeleteIncludingChildren.sql" />
     <Build Include="Schemas\Tree\Procedures\AlCategoryDeletePromotingChildren.sql" />
+    <Build Include="Schemas\Tree\Tables\CtCategory.sql" />
+    <Build Include="Schemas\Tree\Tables\CtCategoryHierarchy.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryInsert.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryGetAll.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryGetChildrenImmediate.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts-Post\_Main.sql" />
@@ -96,5 +101,6 @@
     <None Include="Publish-Demo.ps1" />
     <None Include="Publish-Demo.publish.xml" />
     <None Include="Scripts-Post\Data\Tree.AlCategory.sql" />
+    <None Include="Scripts-Post\Data\Tree.CtCategory.sql" />
   </ItemGroup>
 </Project>

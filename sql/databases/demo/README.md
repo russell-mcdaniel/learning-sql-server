@@ -28,11 +28,11 @@ The following uses cases are implemented for each approach:
 | AL | CT | MP | NS | Use Case |
 |----|----|----|----|----------|
 | :heavy_check_mark: |    |    |    | Get the path for a category. |
-| :heavy_check_mark: |    |    |    | Get the path for all categories. |
-| :heavy_check_mark: |    |    |    | Get the immediate children of a category. |
+| :heavy_check_mark: | :heavy_check_mark: |    |    | Get the path for all categories. |
+| :heavy_check_mark: | :heavy_check_mark: |    |    | Get the immediate children of a category. |
 | :heavy_check_mark: |    |    |    | Get all children of a category.
 | :heavy_check_mark: |    |    |    | Get the parent of a category. |
-| :heavy_check_mark: |    |    |    | Insert a category. |
+| :heavy_check_mark: | :heavy_check_mark: |    |    | Insert a category. |
 | :heavy_check_mark: |    |    |    | Move a category. |
 | :heavy_check_mark: |    |    |    | Delete a category including children. |
 | :heavy_check_mark: |    |    |    | Delete a category promoting children. |
