@@ -3,8 +3,8 @@
 --
 -- Design Notes
 --
--- This includes recursive logic to build the path. If only basic information
--- about the category were required, this could be a simple query by the ID.
+-- This includes recursive logic to build the lineage and the path. If only basic
+-- category information were required, this could be a simple query by the ID.
 -- --------------------------------------------------------------------------------
 CREATE PROCEDURE [Tree].[AlCategoryGet]
 	@CategoryId								int

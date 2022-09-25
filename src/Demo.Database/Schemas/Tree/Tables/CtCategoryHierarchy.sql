@@ -23,10 +23,17 @@ ALTER TABLE [Tree].[CtCategoryHierarchy]
 	REFERENCES [Tree].[CtCategory] ([Id]);
 GO
 
+-- Supports foreign key.
 CREATE NONCLUSTERED INDEX [ix_CtCategoryHierarchy_AncestorId]
 	ON [Tree].[CtCategoryHierarchy] ([AncestorId]);
 GO
 
+-- Supports foreign key.
 CREATE NONCLUSTERED INDEX [ix_CtCategoryHierarchy_DescendantId]
 	ON [Tree].[CtCategoryHierarchy] ([DescendantId]);
+GO
+
+-- Supports query for parent category.
+CREATE NONCLUSTERED INDEX [ix_CtCategoryHierarchy_DescendantIdDepth]
+	ON [Tree].[CtCategoryHierarchy] ([DescendantId], [Depth]);
 GO

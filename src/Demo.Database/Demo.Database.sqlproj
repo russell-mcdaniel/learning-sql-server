@@ -93,6 +93,12 @@
     <Build Include="Schemas\Tree\Procedures\CtCategoryInsert.sql" />
     <Build Include="Schemas\Tree\Procedures\CtCategoryGetAll.sql" />
     <Build Include="Schemas\Tree\Procedures\CtCategoryGetChildrenImmediate.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryGet.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryGetParent.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryGetChildrenAll.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryMove.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryDeleteIncludingChildren.sql" />
+    <Build Include="Schemas\Tree\Procedures\CtCategoryDeletePromotingChildren.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts-Post\_Main.sql" />

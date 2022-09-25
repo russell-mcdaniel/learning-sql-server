@@ -23,5 +23,6 @@ ALTER TABLE [Tree].[AlCategory]
 GO
 
 CREATE NONCLUSTERED INDEX [ix_AlCategory_ParentId]
-	ON [Tree].[AlCategory] ([ParentId]);
+	ON [Tree].[AlCategory] ([ParentId])
+	INCLUDE ([Name]);
 GO

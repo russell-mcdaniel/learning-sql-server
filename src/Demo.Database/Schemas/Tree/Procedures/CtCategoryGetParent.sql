@@ -1,7 +1,7 @@
 ﻿-- --------------------------------------------------------------------------------
 -- Get the parent of a category.
 -- --------------------------------------------------------------------------------
-CREATE PROCEDURE [Tree].[AlCategoryGetParent]
+CREATE PROCEDURE [Tree].[CtCategoryGetParent]
 	@CategoryId								int
 AS
 	SET NOCOUNT ON;
@@ -10,11 +10,13 @@ AS
 		p.Id								AS CategoryId,
 		p.Name								AS CategoryName
 	FROM
-		Tree.AlCategory c
+		Tree.CtCategoryHierarchy h
 	INNER JOIN
-		Tree.AlCategory p
+		Tree.CtCategory p
 	ON
-		p.Id = c.ParentId
+		p.Id = h.AncestorId
 	WHERE
-		c.Id = @CategoryId;
+		h.DescendantId = @CategoryId
+	AND
+		h.Depth = 1;
 GO

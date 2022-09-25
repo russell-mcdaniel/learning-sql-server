@@ -22,8 +22,8 @@ USING
 
 		(107, N'Bedroom', 141),
 		(162, N'Furniture', 107),
-		(109, N'Linens', 107),
 		(110, N'Lighting', 107),
+		(109, N'Linens', 107),
 
 		(111, N'Kitchen', 141),
 		(127, N'Appliances', 111),
