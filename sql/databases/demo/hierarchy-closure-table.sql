@@ -65,8 +65,8 @@ GO
 
 -- This might not make sense, but it is only for demonstration purposes:
 -- Products > Household > Bathroom --> Products > Sporting Goods
---EXEC Tree.CtCategoryMove @CategoryId = 103, @ParentId = 102;
---GO
+EXEC Tree.CtCategoryMove @CategoryId = 103, @AncestorId = 102;
+GO
 
 -- --------------------------------------------------------------------------------
 -- Delete a category including children.

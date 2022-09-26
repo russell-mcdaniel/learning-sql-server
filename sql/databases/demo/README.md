@@ -42,9 +42,9 @@ The following uses cases are implemented for each approach:
 | :heavy_check_mark: | :heavy_check_mark: |    |    | Get all children of a category.
 | :heavy_check_mark: | :heavy_check_mark: |    |    | Get the parent of a category. |
 | :heavy_check_mark: | :heavy_check_mark: |    |    | Insert a category. |
-| :heavy_check_mark: |    |    |    | Move a category. |
+| :heavy_check_mark: | :heavy_check_mark: |    |    | Move a category. |
 | :heavy_check_mark: | :heavy_check_mark: |    |    | Delete a category including children. |
-| :heavy_check_mark: |    |    |    | Delete a category promoting children. |
+| :heavy_check_mark: | :heavy_check_mark: |    |    | Delete a category promoting children. |
 
 Some use cases may have variants that are not covered. Each application often has unique requirements that call for distinct capabilities.
 
