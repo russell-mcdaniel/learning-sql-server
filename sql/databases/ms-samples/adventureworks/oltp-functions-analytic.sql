@@ -20,9 +20,9 @@ select
 	dh.StartDate																	as DepartmentStart,
 	ph.Rate																			as Rate,
 	ph.RateChangeDate																as RateStart,
-	CUME_DIST() over (partition by d.Name order by ph.Rate)							as CumeDist,
-	PERCENTILE_CONT(0.5) within group (order by ph.Rate) over (partition by d.Name)	as MedianCont,
-	PERCENTILE_DISC(0.5) within group (order by ph.Rate) over (partition by Name)	as MedianDisc
+	cume_dist() over (partition by d.Name order by ph.Rate)							as CumeDist,
+	percentile_cont(0.5) within group (order by ph.Rate) over (partition by d.Name)	as MedianCont,
+	percentile_disc(0.5) within group (order by ph.Rate) over (partition by Name)	as MedianDisc
 from
 	HumanResources.EmployeePayHistory ph
 inner join
@@ -38,7 +38,10 @@ on
 inner join
 	HumanResources.vEmployee e
 on
-	e.BusinessEntityID = ph.BusinessEntityID;
+	e.BusinessEntityID = ph.BusinessEntityID
+order by
+	d.Name,
+	ph.Rate desc;
 GO
 
 -- Analytic Function: Cumulative Distribution.
