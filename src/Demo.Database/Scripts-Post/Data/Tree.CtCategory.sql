@@ -1,5 +1,9 @@
-﻿-- TODO: Rework approach for idempotency. This will break on upgrade deployment.
-PRINT N'Populating Tree.CtCategory...';
+﻿PRINT N'Populating Tree.CtCategory...';
+GO
+
+-- Use a direct, destructive approach for simplicity.
+DELETE FROM Tree.CtCategoryHierarchy;
+DELETE FROM Tree.CtCategory;
 GO
 
 EXEC Tree.CtCategoryInsert @CategoryId = 157, @Name = N'Products', @AncestorId = 157;
