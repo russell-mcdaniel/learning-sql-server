@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Learning.DataGenerator.Data;
-using Learning.DataGenerator.Models;
 using Learning.DataGenerator.Core;
 
 namespace Learning.DataGenerator.Generators
