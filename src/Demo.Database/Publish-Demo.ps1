@@ -25,8 +25,8 @@ $LoginPassword = Get-LoginPassword
 
 # Configure Database
 $DatabaseName = "Demo"
-$DataFileDirectory = "/var/opt/lss/mssql/data"
-$LogFileDirectory = "/var/opt/lss/mssql/log"
+$DataFileDirectory = "/var/opt/demo/mssql/data"
+$LogFileDirectory = "/var/opt/demo/mssql/log"
 
 # Configure Publishing
 $DacpacFilePath = ".\bin\Debug\Demo.Database.dacpac"
