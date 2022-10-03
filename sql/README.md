@@ -10,7 +10,6 @@ The directory contents are described in the following table.
 |------------------|------------------|
 | databases        | For specific databases. |
 | .../demo         | For the [Demo database](../../../wiki/Demo-Database). |
-| .../learning     | For the [Learning database](../../../wiki/Learning-Database). |
 | .../ms-samples   | For the Microsoft sample databases. |
 | diagnostics      | To assist with diagnostics and monitoring. |
 | snippets         | For one-off examples and techniques. |
