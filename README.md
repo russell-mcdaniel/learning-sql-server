@@ -1,4 +1,4 @@
-## Learning SQL Server
+## SQL Server
 
 This repository contains a collection of projects, code, and information illustrating various SQL Server features and practices. The details of implementations and practices are often subjective and as such, this content simply reflects my own experience and opinions. Yours may vary and feedback is welcome (see below).
 
