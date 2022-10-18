@@ -1,8 +1,8 @@
-# Overview
+## Overview
 
 These are scripts for exploring SQL Server using the Microsoft sample databases.
 
-# References
+## References
 
 https://docs.microsoft.com/en-us/sql/samples/sql-samples-where-are
 
