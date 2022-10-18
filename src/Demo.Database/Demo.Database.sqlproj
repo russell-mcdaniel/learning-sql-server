@@ -24,7 +24,7 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <DefaultCollation>Latin1_General_100_CI_AS_SC</DefaultCollation>
     <PageVerify>CHECKSUM</PageVerify>
-    <Recovery>SIMPLE</Recovery>
+    <Recovery>FULL</Recovery>
     <EnableFullTextSearch>False</EnableFullTextSearch>
     <DefaultCursor>GLOBAL</DefaultCursor>
   </PropertyGroup>
@@ -108,5 +108,8 @@
     <None Include="Publish-Demo.publish.xml" />
     <None Include="Scripts-Post\Data\Tree.AlCategory.sql" />
     <None Include="Scripts-Post\Data\Tree.CtCategory.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Scripts-Pre\_Main.sql" />
   </ItemGroup>
 </Project>

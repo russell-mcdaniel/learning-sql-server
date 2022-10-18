@@ -1,1 +1,1 @@
-docker compose --project-name "learning-sql-server" --file "./sql-server.yml" stop
+docker compose --project-name "sql-server" --file "./sql-server.yml" stop

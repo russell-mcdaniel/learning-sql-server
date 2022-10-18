@@ -11,9 +11,9 @@ services:
       - .\config\mssql.env
       - .\config\mssql-password.env
     volumes:
-      - mssql-data:/var/opt/lss/mssql/data
-      - mssql-log:/var/opt/lss/mssql/log
-      - mssql-backup:/var/opt/lss/mssql/backup
+      - mssql-data:/var/opt/demo/mssql/data
+      - mssql-log:/var/opt/demo/mssql/log
+      - mssql-backup:/var/opt/demo/mssql/backup
 
 networks:
   net:
