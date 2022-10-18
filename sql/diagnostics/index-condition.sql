@@ -1,4 +1,4 @@
-USE Learning;
+USE [Database];
 GO
 
 SELECT
@@ -16,8 +16,8 @@ SELECT
 	CAST(ips.avg_record_size_in_bytes AS decimal(9,1))				AS row_size_b,
 	ips.fragment_count												AS frag_count,
 	CAST(ips.avg_fragment_size_in_pages AS decimal(9,1))			AS frag_size_pg,
-	CAST(ips.avg_fragmentation_in_percent AS decimal(3,1))			AS frag_pct,
-	CAST(ips.avg_page_space_used_in_percent AS decimal(3,1))		AS pg_used_pct
+	CAST(ips.avg_fragmentation_in_percent AS decimal(4,1))			AS frag_pct,
+	CAST(ips.avg_page_space_used_in_percent AS decimal(4,1))		AS pg_used_pct
 FROM
 	sys.indexes i
 CROSS APPLY
@@ -25,8 +25,8 @@ CROSS APPLY
 --WHERE
 --	i.object_id IN
 --	(
---		OBJECT_ID(N'Enrollment.Student'),
---		OBJECT_ID(N'Organization.Professor')
+--		OBJECT_ID(N'Schema.Table'),
+--		OBJECT_ID(N'Schema.Table')
 --	)
 ORDER BY
 --	ips.avg_fragmentation_in_percent DESC,
@@ -36,3 +36,11 @@ ORDER BY
 	i.name,
 	ips.index_level DESC;				-- 0 is leaf; highest value is root.
 GO
+
+/*
+ALTER INDEX ALL ON [Schema].[Table] REORGANIZE;
+GO
+
+ALTER INDEX ALL ON [Schema].[Table] REBUILD;
+GO
+*/
