@@ -1,3 +1,6 @@
+--
+-- Display execution metrics for active queries.
+--
 USE master;
 GO
 
